@@ -1,0 +1,115 @@
+<div class="q-page server-detail">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+
+      <div class="drop-menu brand-selector pull-left" uib-dropdown>
+        <div uib-dropdown-toggle>
+          {{ctrl.server.name}}
+        </div>
+        <ul class="dropdown-menu" uib-dropdown-menu>
+          <li role="menuitem" ng-repeat="server in ctrl.servers.items"><a ng-click="ctrl.goServer(server)">{{server.name}}</a></li>
+        </ul>
+      </div>
+
+      <li ng-repeat="tab in ctrl.tabs" ng-class="{active: tab == ctrl.currentTab}">
+        <a translate="{{tab}}" ng-click="ctrl.currentTab = tab"></a>
+      </li>
+
+      <date-range class="pull-right" config="['hour', 'day', 'week']" ng-hide="ctrl.currentTab == ctrl.tabs[1]" on-change="ctrl.onDateChange(dateStart, dateEnd)"></date-range>
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.manualUpdate()" translate="REFRESH"></button>
+
+    </ul>
+
+    <!-- overview -->
+    <div class="tab-content overview" ng-if="ctrl.currentTab == ctrl.tabs[0]">
+      <qn-chart qn-chart-config='ctrl.overviewTab.cpuChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.overviewTab.loadChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.overviewTab.memoryChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.overviewTab.networkChart'></qn-chart>
+    </div>
+
+    <!-- disk -->
+    <div class="tab-content disk" ng-if="ctrl.currentTab == ctrl.tabs[1]">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>FILE_SYSTEM</th>
+            <th><span translate="DISK"></span><span>{{'WHITE_SPACE' | translate}}</span><span translate="TYPE"></span></th>
+            <th translate>MOUNT_POINT</th>
+            <th translate>STATUS</th>
+            <th translate>DISK_SIZE</th>
+            <th translate>USED_RATIO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="(ctrl.diskTab.data.length == 0) && ctrl.diskTab.loaded">
+            <td colspan="7" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <tr ng-repeat="disk in ctrl.diskTab.data">
+            <td class="row-icon">
+              <i class="fa fa-hdd-o"></i>
+            </td>
+            <td>{{disk.uid}}</td>
+            <td>{{disk.diskType | type:'disk' | translate}}</td>
+            <td>{{disk.mountpoint}}</td>
+            <td>
+              <status-tag label="disk.status.toUpperCase()" type="disk.status | commonStatusTypeFilter"></status-tag>
+            </td>
+            <td>{{disk.diskSize | commonSize:2:'G':'B'}}</td>
+            <td>{{disk.usedRate.toFixed(2)}} %</td>
+          </tr>
+          <tr ng-if="!ctrl.diskTab.loaded">
+            <td colspan="7" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- process -->
+    <div class="tab-content process" ng-if="ctrl.currentTab == ctrl.tabs[2]">
+        <table class="q-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th translate ng-click="ctrl.changeOrder('name')">PROCESS</th>
+              <th translate ng-click="ctrl.changeOrder('status')">STATUS</th>
+              <th translate ng-click="ctrl.changeOrder('cpu')">CPU</th>
+              <th translate ng-click="ctrl.changeOrder('memory')">MEMORY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-if="(ctrl.processTab.data.length == 0) && ctrl.processTab.loaded">
+              <td colspan="5" class="text-center text-sub" translate>EMPTY</td>
+            </tr>
+            <tr ng-repeat="process in ctrl.processTab.data | orderBy: ctrl.orderKey"
+              ng-click="ctrl.processTab.selectedProcess = process.name">
+              <td class="row-icon">
+                <input type="radio" ng-model="ctrl.processTab.selectedProcess" ng-value="process.name" ng-click="$event.stopPropagation()">
+              </td>
+              <td>{{process.name}}</td>
+              <td>
+                <status-tag label="process.status.toUpperCase()" type="process.status | commonStatusTypeFilter"></status-tag>
+              </td>
+              <td>{{(process.cpu).toFixed(2)}}%</td>
+              <td>{{(process.memory).toFixed(2)}}%</td>
+            </tr>
+            <tr ng-if="!ctrl.processTab.loaded">
+              <td colspan="5" class="text-center text-sub">
+                <qn-loading></qn-loading>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="process-charts" ng-if="ctrl.processTab.selectedProcess">
+          <qn-chart qn-chart-config='ctrl.processTab.cpuChart'></qn-chart>
+          <qn-chart qn-chart-config='ctrl.processTab.memoryChart'></qn-chart>
+        </div>
+    </div>
+
+  </div>
+</div>

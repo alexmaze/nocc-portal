@@ -1,0 +1,121 @@
+<div class="q-page pfd-set-list">
+
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+
+      <div class="drop-menu brand-selector pull-left" uib-dropdown>
+        <div uib-dropdown-toggle>
+          {{ctrl.group.hostnames | pfdGroupHostsFilter:true:true}}
+        </div>
+        <ul class="dropdown-menu" uib-dropdown-menu>
+          <li role="menuitem" ng-repeat="group in ctrl.groups">
+            <a ng-click="ctrl.goGroup(group)">
+              {{group.hostnames | pfdGroupHostsFilter:true:true}}
+  	        </a>
+          </li>
+        </ul>
+      </div>
+
+      <li ng-repeat="tab in ctrl.tabs" ng-class="{active: tab == ctrl.currentTab}">
+        <a translate="{{tab}}" ng-click="ctrl.currentTab = tab"></a>
+      </li>
+
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.onUpdate()" translate="REFRESH"></button>
+      <date-range
+        class="pull-right"
+        config="['hour', 'day', 'week']"
+        ng-show="ctrl.currentTab == ctrl.tabs[1]"
+        on-change="ctrl.onDateChange(dateStart, dateEnd)">
+      </date-range>
+    </ul>
+
+    <!-- 实时状态 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[0]">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>SETS</th>
+            <th translate>STATUS</th>
+            <th ng-repeat="host in ctrl.group.hosts">
+              <a ng-click="ctrl.gotoServer(host[0])"
+                tooltip-placement="bottom"
+                tooltip-class="tooltip"
+                tooltip-append-to-body="true"
+                uib-tooltip="{{host[0] | hostFilter}}">
+                {{ctrl.group.hostnames[$index] | hostFilter}}
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="(ctrl.realtimeTab.data.length == 0) && ctrl.realtimeTab.loaded">
+            <td colspan="{{ctrl.group.hosts.length + 3}}" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <tr ng-repeat="set in ctrl.realtimeTab.data">
+            <td class="row-icon">
+              <i class="fa fa-hdd-o"></i>
+            </td>
+            <td>{{set.id}}</td>
+            <td>
+              <select ng-model="set.readOnly" convert-to-boolean
+                ng-change="ctrl.changeSetAccess(set, set.readOnly)">
+                <option value="true">RO</option>
+                <option value="false">RW</option>
+              </select><br>
+            </td>
+            <td ng-repeat="host in ctrl.group.hosts">
+              <status-tag ng-if="set.path[$index] !== undefined"
+                label="(set.repair[$index]?'BAD':'GOOD')"
+                uib-tooltip="{{set.hosts[$index][0] + ' ' +set.path[$index]}}"
+                tooltip-placement="bottom"
+                tooltip-class="tooltip"
+                tooltip-append-to-body="true"
+                type="(set.repair[$index]?'BAD':'GOOD') | commonStatusTypeFilter"></status-tag>
+
+              <a ng-if="set.path[$index] !== undefined && !set.repair[$index]"
+                class="btn-action action set_bad"
+                ng-click="ctrl.setBad(set, host[0])"
+                tooltip-placement="bottom"
+                tooltip-class="tooltip"
+                tooltip-append-to-body="true"
+                uib-tooltip="{{ 'CLICK_SET_BAD' | translate }}">
+                <span translate>SET_BAD</span>
+              </a>
+
+              <a ng-if="set.path[$index] !== undefined && set.repair[$index] && set.repairProgress[$index] >= 0"
+                class="syncing">
+                <span translate>SYNCING</span>
+                {{set.repairProgress[$index]}}%
+              </a>
+              <a ng-if="set.path[$index] !== undefined && set.repair[$index] && set.repairProgress[$index] == -1"
+                class="sync"
+                ng-click="ctrl.syncDisk(set, host[0])"
+                tooltip-placement="bottom"
+                tooltip-class="tooltip"
+                tooltip-append-to-body="true"
+                uib-tooltip="{{ 'CLICK_SYNC' | translate }}"
+                translate="SYNC">
+              </a>
+            </td>
+          </tr>
+          <tr ng-if="!ctrl.realtimeTab.loaded">
+            <td colspan="{{ctrl.group.hosts.length + 3}}" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 性能图表 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[1]">
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.responseTime'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.transaction'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.errorRate'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.throughput'></qn-chart>
+    </div>
+
+  </div>
+</div>

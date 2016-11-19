@@ -1,0 +1,57 @@
+@import (reference) '~base/variables.less';
+
+.brand-name {
+  padding: 0 20px 0 10px;
+  color: @primary-color;
+  font-weight: bold;
+  border-left: 2px solid @primary-color;
+  line-height: 30px;
+  margin: 2px 10px 2px 0;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.brand-selector {
+  .dropdown-toggle {
+    .brand-name;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: "\f0da";
+      font: normal normal normal 14px/1 FontAwesome;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      transform: rotate(90deg);
+      display: inline-block;
+      position: absolute;
+      top: 8px;
+      right: 6px;
+    }
+    &:hover {
+      background: #e5e5e5;
+    }
+  }
+  .dropdown-menu {
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
+      border: 1px solid #e6e9f0;
+      min-width: 100%;
+      box-sizing: content-box;
+      left: -1px;
+      overflow: auto;
+      max-height: 400px;
+      top: 34px;
+      li {
+        height: 40px;
+        padding: 0 10px;
+        a {
+          height: 100%;
+          padding-top: 10px;
+          text-align: center;
+          min-width: 200px;
+          // border-bottom: 1px solid #E6E9F0;
+        }
+      }
+    }
+}

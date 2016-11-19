@@ -1,0 +1,38 @@
+<button type="button" class="close" ng-click="$dismiss()"><i class="qi qi-close"></i></button>
+
+<div class="modal-center-wrapper">
+  <div class="modal-header">
+    <h6 class="modal-title text-center bold">{{data.title}}</h6>
+  </div>
+
+  <div class="modal-body">
+    <p class="text-center center-block" ng-bind-html="data.msg"></p>
+    <div class="form-group form-inline text-center"
+      ng-class="{true: 'has-error'}[ctrl.errorIndex >=0]">
+      <input type="text"
+        style="margin: 0;"
+        class="form-control"
+        ng-model="promptResult"
+        auto-focus="true"
+        ng-change="ctrl.validate(promptResult)">
+      <p class="help-block text-left"
+        style="display: block; margin: auto;"
+        ng-repeat="err in data.checks"
+        ng-show="ctrl.errorIndex == $index"
+        >{{err.errorMsg}}</p>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <div class="text-center">
+      <button type="button" class="btn btn-default btn-lg btn-mute" ng-click="$dismiss()" translate="CANCEL"></button>
+      <button type="button" class="btn btn-primary btn-lg btn-emphasis"
+        ng-class="'btn-' + type"
+        ng-click="$close(promptResult)"
+        ng-disabled="ctrl.errorIndex >= 0 || !promptResult"
+        translate="CONFIRM"></button>
+    </div>
+  </div>
+</div>
+

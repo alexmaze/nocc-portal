@@ -1,0 +1,122 @@
+<div class="q-page statistics">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+      <li ng-repeat="tab in ctrl.tabs" ng-class="{active: tab == ctrl.currentTab}">
+        <a translate="{{tab}}" ng-click="ctrl.currentTab = tab"></a>
+      </li>
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.onUpdate(true)" translate="REFRESH"></button>
+      <div ng-model="ctrl.dateRange"
+        class="pull-right"
+        range-datetimepicker
+        options="ctrl.dateRangeOptions">
+      </div>
+    </ul>
+
+
+    <!-- 存储 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[0]">
+      <qn-chart qn-chart-config='ctrl.storageTab.storageChart'></qn-chart>
+    </div>
+
+    <!-- 请求数 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[1]">
+      <qn-chart qn-chart-config='ctrl.requestNumTab.uploadChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.requestNumTab.downloadChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.requestNumTab.deleteChart'></qn-chart>
+    </div>
+
+    <!-- 流量 -->
+    <div class="tab-content with-extra-info" ng-if="ctrl.currentTab == ctrl.tabs[2]">
+
+      <div class="select-range">
+        <div class="btn-group">
+          <label class="btn btn-mute btn-sm btn-default"
+            ng-disabled="ctrl.flowTab.flowChart.isLoading"
+            ng-model="ctrl.range" uib-btn-radio="'1d'">
+            1<span translate="WHITE_SPACE"></span><span translate="DAY"></span>
+          </label>
+          <label class="btn btn-mute btn-sm btn-default"
+            ng-disabled="ctrl.flowTab.flowChart.isLoading"
+            ng-model="ctrl.range" uib-btn-radio="'10m'">
+            10<span translate="WHITE_SPACE"></span><span translate="MINUTE"></span>
+          </label>
+        </div>
+      </div>
+      <div class="info">
+        <div class="upload">
+          <div class="title">
+            <span translate="UPLOAD"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="TOTAL"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="FLOW"></span>
+          </div>
+          <div class="value">{{ctrl.flowTab.uploadTotal}}</div>
+        </div>
+        <div class="download">
+          <div class="title">
+            <span translate="DOWNLOAD"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="TOTAL"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="FLOW"></span>
+          </div>
+          <div class="value">{{ctrl.flowTab.downloadTotal}}</div>
+        </div>
+      </div>
+      <qn-chart qn-chart-config='ctrl.flowTab.flowChart'></qn-chart>
+
+    </div>
+
+    <!-- 带宽 -->
+    <div class="tab-content with-extra-info" ng-if="ctrl.currentTab == ctrl.tabs[3]">
+
+      <div class="select-range">
+        <div class="btn-group">
+          <label class="btn btn-mute btn-sm btn-default"
+            ng-disabled="ctrl.bandwidthTab.bandwidthChart.isLoading"
+            ng-model="ctrl.range" uib-btn-radio="'1d'">
+            1<span translate="WHITE_SPACE"></span><span translate="DAY"></span>
+          </label>
+          <label class="btn btn-mute btn-sm btn-default"
+            ng-disabled="ctrl.bandwidthTab.bandwidthChart.isLoading"
+            ng-model="ctrl.range" uib-btn-radio="'10m'">
+            10<span translate="WHITE_SPACE"></span><span translate="MINUTE"></span>
+          </label>
+        </div>
+      </div>
+      <div class="info">
+        <div class="upload">
+          <div class="title">
+            <span translate="PEAK_NUM"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="BANDWIDTH"></span><!--
+            --><span translate="WHITE_SPACE"></span>
+            (<span translate="UPLOAD"></span>)
+          </div>
+          <div class="value">{{ctrl.bandwidthTab.uploadPeak}}</div>
+        </div>
+        <div class="download">
+          <div class="title">
+            <span translate="PEAK_NUM"></span><!--
+            --><span translate="WHITE_SPACE"></span><!--
+            --><span translate="BANDWIDTH"></span><!--
+            --><span translate="WHITE_SPACE"></span>
+            (<span translate="DOWNLOAD"></span>)
+          </div>
+          <div class="value">{{ctrl.bandwidthTab.downloadPeak}}</div>
+        </div>
+      </div>
+      <qn-chart qn-chart-config='ctrl.bandwidthTab.bandwidthChart'></qn-chart>
+
+    </div>
+
+    <!-- 每日回收量 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[4]">
+      <qn-chart qn-chart-config='ctrl.recycledDailyTab.recycledChart'></qn-chart>
+    </div>
+
+
+  </div>
+</div>

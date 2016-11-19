@@ -1,0 +1,39 @@
+<div class="signin-page">
+  <qn-header title="QOS"></qn-header>
+
+  <form name="form" ng-submit="ctrl.submit()">
+    <div class="form-group"
+      ng-class="{'has-error': form.username.$invalid && form.username.$dirty}">
+      <input type="text"
+        name="username"
+        class="form-control"
+        placeholder="{{ 'USER_NAME' | translate }}"
+        ng-model="ctrl.username"
+        required
+        ng-attr-autofocus="{{ctrl.username?undefined:true}}"
+        keydown-enter="ctrl.validateAndSubmit()">
+    </div>
+
+    <div class="form-group password-group"
+      ng-class="{'has-error': form.password.$invalid && form.password.$dirty}">
+      <input type="password"
+        name="password"
+        class="form-control"
+        placeholder="{{ 'PASSWORD' | translate }}"
+        ng-model="ctrl.password"
+        required
+        keydown-enter="ctrl.validateAndSubmit()"
+        ng-attr-autofocus="{{ctrl.username}}">
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-emphasis signin-btn"
+        ng-disabled="form.$invalid"
+        type="submit"
+        translate="SIGNIN">
+      </button>
+    </div>
+  </form>
+
+  <qn-footer show-lang="true"></qn-footer>
+</div>

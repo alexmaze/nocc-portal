@@ -1,0 +1,59 @@
+.navbar-actions {
+  .lang-switcher {
+    float: left;
+    margin: 15px 10px 13px 10px;
+  }
+
+  .action.event {
+    position: relative;
+    margin-right: -1px;
+    &::after {
+      position: absolute;
+      display: block;
+      top: 50%;
+      right: -1px;
+      margin-top: -9px;
+      height: 18px;
+      content: "";
+      border-right: 1px solid #e6e9f0;
+    }
+  }
+  .action.user-info {
+    .dropdown-user {
+      width: 300px;
+      > div {
+        margin: 20px 0 15px 0;
+        .user-account {
+          font-size: 16px;
+          font-weight: bold;
+          color: #525866;
+          margin: 0 0 0 40px;
+          td {
+            padding-right:10px;
+            font-size: 14px;
+            vertical-align: middle;
+            font-weight: normal;
+            height: 25px;
+          }
+          td:first-of-type {
+            font-weight: 500;
+          }
+        }
+      }
+      > ul {
+        border-top: 1px solid #E6E9F0;
+        background: #F5F7FA;
+        font-size: 14px;
+        padding: 0;
+        > li {
+          padding: 0;
+          text-align: center;
+        }
+        a {
+          height: 40px;
+          line-height: 40px;
+        }
+      }
+    }
+  }
+}

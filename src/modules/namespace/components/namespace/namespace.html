@@ -1,0 +1,34 @@
+<div class="q-page manage-namespace">
+  <div class="resource-body">
+
+    <div class="actions clearfix">
+      <a class="btn btn-primary pull-left"
+        ng-show="ctrl.systemConfig"
+        ng-click="ctrl.openAddDialog()">
+        <span translate>NEW</span>{{'WHITE_SPACE' | translate}}<span translate>NAMESPACE</span>
+      </a>
+
+      <qn-search-box class="pull-right"
+        value="ctrl.searchKey"
+        value-change="ctrl.searchChange()"
+        placeholder="{{ 'SEARCH' | translate }}"></qn-search-box>
+      <button class="btn btn-mute btn-default pull-right" ng-click="ctrl.loadData()" translate="REFRESH"></button>
+    </div>
+
+    <div class="content">
+      <namespace-explorer ns-model="ctrl.pageData" ns-loaded="ctrl.loaded" ns-actions="ctrl.actions"></namespace-explorer>
+
+      <div uib-pagination
+        ng-if="ctrl.data && ctrl.data.items"
+        ng-show="ctrl.data.items.length > ctrl.itemsPerPage && !ctrl.searchKey"
+        force-ellipses="true"
+        total-items="ctrl.data.items.length"
+        items-per-page="ctrl.itemsPerPage"
+        ng-model="ctrl.page"
+        ng-change="ctrl.pageChange()"
+        max-size="5"
+        class="pagination-sm pull-right"></div>
+    </div>
+    </div>
+  </div>
+</div>

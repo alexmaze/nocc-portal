@@ -1,0 +1,54 @@
+<div class="q-page bucket-domain">
+  <div class="resource-body">
+
+    <div class="actions clearfix">
+      <div class="brand-name pull-left">
+        {{ctrl.namespaceName}} / {{ctrl.bucketName}}
+      </div>
+
+      <a class="btn btn-primary pull-left"
+        ng-show="ctrl.opUser.role == 1 || !ctrl.systemConfig.complexMode"
+        ng-click="ctrl.openAddDialog()">
+        <span translate>BIND_DOMAIN</span>
+      </a>
+
+      <qn-search-box class="pull-right"
+        value="ctrl.searchKey"
+        placeholder="{{ 'SEARCH' | translate }}"></qn-search-box>
+
+      <button class="btn btn-mute btn-default pull-right" ng-click="ctrl.loadDomains()" translate="REFRESH"></button>
+
+    </div>
+
+    <div class="content">
+
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>DOMAIN</th>
+            <th translate>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="(ctrl.data.length == 0) && ctrl.loaded">
+            <td colspan="3" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <tr ng-repeat="domain in ctrl.data | filter:ctrl.searchKey">
+            <td></td>
+            <td>{{domain}}</td>
+            <td>
+              <a class="btn-action action" ng-click="ctrl.unbind(domain)" translate>UNBIND</a>
+            </td>
+          </tr>
+          <tr ng-if="!ctrl.loaded">
+            <td colspan="3" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

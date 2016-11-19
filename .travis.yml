@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - '4.2.1'
+before_install:
+install:
+  - npm run init
+script:
+  - npm run build
+cache:
+  directories:
+    - node_modules

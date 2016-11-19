@@ -1,0 +1,46 @@
+<ul class="actions navbar-actions">
+
+  <lang-switcher></lang-switcher>
+
+  <li class="action event"
+    ng-show="ctrl.hasEvent()"
+    ng-class="{true: 'open'}[ctrl.openEventsBox]"
+    ng-click="ctrl.openEvents($event)">
+    <a>
+      <i class="fa fa-bell-o"></i>
+      <span translate>EVENTS</span>
+    </a>
+  </li>
+  <events-box ng-if="ctrl.openEventsBox" is-open="ctrl.openEventsBox"></events-box>
+
+  <li class="action user-info" uib-dropdown>
+    <a uib-dropdown-toggle>
+      <i class="fa fa-user-o"></i>
+      <span translate>USER</span>
+    </a>
+    <div class="dropdown-user" uib-dropdown-menu>
+      <div>
+        <table class="user-account">
+          <tbody>
+            <tr>
+              <td translate="USER"></td>
+              <td>{{ctrl.user.name}}</td>
+            </tr>
+            <tr>
+              <td translate="ROLE"></td>
+              <td><status-tag label="(ctrl.user.role | userRoleFilter) | translate" type="'normal'"></status-tag></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ul>
+        <li>
+          <a href class="text-sub" ng-click="ctrl.signOut()">
+            <i class="fa fa-sign-out"></i>
+            <span translate>SIGNOUT</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

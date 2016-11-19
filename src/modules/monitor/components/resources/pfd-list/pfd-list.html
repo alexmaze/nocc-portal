@@ -1,0 +1,104 @@
+<div class="q-page pfd-list">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+      <li ng-repeat="tab in ctrl.tabs" ng-class="{active: tab == ctrl.currentTab}">
+        <a translate="{{tab}}" ng-click="ctrl.currentTab = tab"></a>
+      </li>
+
+      <qn-search-box class="pull-right"
+        ng-show="ctrl.currentTab == ctrl.tabs[0]"
+        value="ctrl.searchKey"
+        value-change="ctrl.searchChange()"
+        placeholder="{{ 'SEARCH' | translate }}"></qn-search-box>
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.refresh()" translate="REFRESH"></button>
+      <date-range
+        class="pull-right"
+        config="['hour', 'day', 'week']"
+        ng-show="ctrl.currentTab == ctrl.tabs[1]"
+        on-change="ctrl.onDateChange(dateStart, dateEnd)">
+      </date-range>
+      <div class="check-filters pull-right" ng-show="ctrl.currentTab == ctrl.tabs[0]">
+        <input type="checkbox" ng-model="ctrl.hideRealtimeData" ng-change="ctrl.refreshState()"><span translate>HIDE_REALTIME_DATA</span>
+        <input type="checkbox" ng-model="ctrl.hasBrokenDisks" ng-change="ctrl.refreshState()"><span translate>HAS_BROKEN_DISKS</span>
+      </div>
+
+    </ul>
+
+    <!-- 实时状态 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[0]">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>GROUPS</th>
+            <th translate>GROUP_SET_CONFIG</th>
+            <th translate>BROCKEN_DISK_NUMBER</th>
+            <th translate>RESPONSE_TIME</th>
+            <th translate>TRANSACTION_NUMBER</th>
+            <th translate>THROUGHPUT</th>
+            <th translate>ERROR_RATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="(ctrl.totalData.length == 0) && ctrl.realtimeTab.loaded">
+            <td colspan="8" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <!--ng-show="ctrl.hasBrokenDisks ? (group.repair > 0) : true"-->
+          <tr ng-repeat="group in ctrl.pageData">
+            <td class="row-icon">
+              <i class="fa fa-object-group"></i>
+            </td>
+            <td>
+              <a ng-click="ctrl.gotoGroup(group)"
+                ng-bind-html="group.hostnames | pfdGroupHostsFilter:false:true"
+                tooltip-placement="bottom"
+                tooltip-class="tooltip"
+                tooltip-append-to-body="true"
+                uib-tooltip-html="group.hosts | pfdGroupHostsFilter:false:false">
+              </a>
+            </td>
+            <td>
+              <div ng-repeat="(key, value) in group.status" ng-if="value > 0">
+                <status-tag
+                  label="key.toUpperCase()"
+                  value="value"
+                  type="'default'">
+                </status-tag>
+              </div>
+            </td>
+            <td>{{group.repair}}</td>
+            <td ng-bind-html="group.statistics | hostStatisticsFilter:'responseTime':group.hosts"></td>
+            <td ng-bind-html="group.statistics | hostStatisticsFilter:'transaction':group.hosts"></td>
+            <td ng-bind-html="group.statistics | hostStatisticsFilter:'throughput':group.hosts"></td>
+            <td ng-bind-html="group.statistics | hostStatisticsFilter:'errorRate':group.hosts"></td>
+          </tr>
+          <tr ng-show="!ctrl.realtimeTab.loaded">
+            <td colspan="8" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div uib-pagination
+        ng-if="ctrl.totalData != undefined"
+        ng-show="ctrl.totalData.length > ctrl.itemsPerPage && !ctrl.searchKey"
+        force-ellipses="true"
+        total-items="ctrl.totalData.length"
+        items-per-page="ctrl.itemsPerPage"
+        ng-model="ctrl.page"
+        ng-change="ctrl.refreshState()"
+        max-size="5"
+        class="pagination-sm pull-right"></div>
+    </div>
+
+    <!-- 性能图表 -->
+    <div class="tab-content" ng-if="ctrl.currentTab == ctrl.tabs[1]">
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.responseTime'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.transaction'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.errorRate'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.performanceTab.charts.throughput'></qn-chart>
+    </div>
+
+  </div>
+</div>

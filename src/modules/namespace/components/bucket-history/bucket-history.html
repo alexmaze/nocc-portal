@@ -1,0 +1,23 @@
+<div class="q-page bucket-history">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a translate="HISTORY_USAGE"></a>
+      </li>
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.loadData()" translate="REFRESH"></button>
+      <div ng-model="ctrl.dateRange"
+        class="pull-right"
+        range-datetimepicker
+        options="ctrl.dateRangeOptions">
+      </div>
+    </ul>
+
+    <!-- 历史用量 -->
+    <div class="tab-content">
+      <qn-chart qn-chart-config='ctrl.storageChart'></qn-chart>
+      <qn-chart qn-chart-config='ctrl.objNumChart'></qn-chart>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "portal-qos",
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160725073351",
+    "angular-animate": "registry:dt/angular-animate#1.5.0+20160709061515",
+    "angular-loading-bar": "registry:dt/angular-loading-bar#0.0.0+20160317120654",
+    "angular-local-storage": "registry:dt/angular-local-storage#0.1.5+20160602154142",
+    "angular-translate": "registry:dt/angular-translate#2.4.0+20160729132354",
+    "angular-ui-bootstrap": "registry:dt/angular-ui-bootstrap#0.13.3+20160705221453",
+    "angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160707113237",
+    "angularjs-toaster": "registry:dt/angularjs-toaster#0.4.13+20160317120654",
+    "echarts": "registry:dt/echarts#0.0.0+20160409144419",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "lodash": "registry:dt/lodash#4.14.0+20160919145112",
+    "require": "registry:dt/require#2.1.20+20160316155526"
+  }
+}

@@ -1,0 +1,83 @@
+<div class="q-page monitor-capacity">
+  <div class="resource-body">
+    <ul class="nav nav-tabs">
+      <li ng-repeat="tab in ctrl.tabs" ng-class="{active: tab.title == ctrl.currentTab}" ng-show="tab.isShow">
+        <a translate="{{tab.title}}" ng-click="ctrl.currentTab = tab.title"></a>
+      </li>
+    </ul>
+    <!-- 概览 -->
+    <div class="tab-content hc-tab" ng-if="ctrl.currentTab === ctrl.tabs[0].title">
+      <div class="overview">
+        <div class="overview-info">
+          <qn-loading ng-show="!ctrl.overviewTab.overviewChart.data"></qn-loading>
+          <table ng-show="ctrl.overviewTab.overviewChart.data">
+            <tbody>
+              <tr>
+                <td translate="TOTAL_CAPACITY" class="title"></td>
+                <td class="value">{{ctrl.overviewTab.overviewChart.data.total | commonSize:2:'T':'B':1024}}</td>
+              </tr>
+              <tr>
+                <td translate="USED_CAPACITY" class="title"></td>
+                <td class="value">{{ctrl.overviewTab.overviewChart.data.used | commonSize:2:'T':'B':1024}}</td>
+              </tr>
+              <tr>
+                <td translate="AVALIABLE_CAPACITY" class="title"></td>
+                <td class="value">{{ctrl.overviewTab.overviewChart.data.free | commonSize:2:'T':'B':1024}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="overview-chart">
+          <qn-chart qn-chart-config='ctrl.overviewTab.overviewChart'></qn-chart>
+        </div>
+      </div>
+      <div class="trend">
+        <div class="trend-head clearfix">
+          <div class="title"><span translate>CAPACITY</span>{{'WHITE_SPACE' | translate}}<span translate>TREND</span></div>
+          <div ng-model="ctrl.overviewTab.dateRange" class="pull-right" range-datetimepicker options="ctrl.dateRangeOptions"></div>
+        </div>
+        <qn-chart qn-chart-config='ctrl.overviewTab.trendChart'></qn-chart>
+      </div>
+    </div>
+    <!-- 详情 -->
+    <div class="tab-content detail-tab" ng-if="ctrl.currentTab === ctrl.tabs[1].title">
+      <storage-item ng-if="chart.isShow" ng-repeat="chart in ctrl.detailTab.charts" ng-model="chart"></storage-item>
+    </div>
+    <!-- 分层迁移 -->
+    <div class="tab-content lm-tab" ng-if="ctrl.currentTab === ctrl.tabs[2].title && ctrl.lmTab.isShow">
+
+      <div class="settings-head">
+        <div class="title" translate="MIGRATION_SETTING"></div>
+      </div>
+      <div class="settings-body">
+        <qn-loading ng-show="!ctrl.lmTab.data"></qn-loading>
+        <form name="ctrl.configForm" ng-if="ctrl.lmTab.data">
+          <div class="item">
+            <div class="item-title" translate="ENABLE_MIGRATION"></div>
+            <div class="item-body">
+              <label class="switcher" ng-click="ctrl.preventBubble($event)">
+                <input type="checkbox" ng-model="ctrl.lmTab._newData.pfdMigrate">
+                <span></span>
+              </label>
+            </div>
+          </div>
+          <div class="item" ng-class="{'disabled': !ctrl.lmTab._newData.pfdMigrate}">
+            <div class="item-title" translate="MIGRATION_WINDOW"></div>
+            <div class="item-body">
+              <span class="info" translate="MIGRATION_WINDOW_DETAIL" translate-values="ctrl.lmTab._newData"></span>
+              <button class="edit" ng-click="ctrl.changeLMTime()" ng-disabled="!ctrl.lmTab._newData.pfdMigrate"><i class="fa fa-edit"></i></button>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-emphasis"
+            ng-show="ctrl.configForm.$dirty"
+            ng-disabled="ctrl.configForm.$invalid"
+            ng-click="ctrl.saveLMConfig()"
+            translate="UPDATE"></button>
+          <button class="btn btn-primary btn-mute"
+            ng-show="ctrl.configForm.$dirty"
+            ng-click="ctrl.resetLMConfig()"
+            translate="CANCEL"></button>
+        </form>
+      </div>
+    </div>
+  </div>

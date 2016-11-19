@@ -1,0 +1,51 @@
+<div class="q-page memcached">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a translate="{{ctrl.tabs[0]}}" ng-click="ctrl.currentTab = tab"></a>
+      </li>
+
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.onUpdate()" translate="REFRESH"></button>
+    </ul>
+
+    <!-- 实时状态 -->
+    <div class="tab-content">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>INSTANCES</th>
+            <th translate>STATUS</th>
+            <th translate>USED_MEMORY</th>
+            <th translate>MEMORY_SIZE</th>
+            <th translate>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="(ctrl.realtimeTab.data.length == 0) && ctrl.realtimeTab.loaded">
+            <td colspan="6" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <tr ng-repeat="inst in ctrl.realtimeTab.data">
+            <td class="row-icon"></td>
+            <td><a ng-click="ctrl.gotoInstance(inst)">{{inst.host}}</a></td>
+            <td>
+              <status-tag
+                  label="inst.status.toUpperCase()"
+                  type="inst.status | commonStatusTypeFilter"></status-tag>
+            </td>
+            <td>{{inst.usedMemory | fileSize}}</td>
+            <td>{{inst.limitMemory | fileSize}}</td>
+            <td><a ng-click="ctrl.gotoServer(inst.host)" translate>SERVER_DETAIL</a></td>
+          </tr>
+          <tr ng-if="!ctrl.realtimeTab.loaded">
+            <td colspan="6" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

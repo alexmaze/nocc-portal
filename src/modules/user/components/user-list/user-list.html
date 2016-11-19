@@ -1,0 +1,29 @@
+<div class="q-page user-list">
+  <div class="resource-body">
+
+    <div class="actions clearfix">
+      <a class="btn btn-primary pull-left" ng-click="ctrl.create();">
+        <span translate>ADD_USER</span>
+      </a>
+<!--
+      <qn-search-box class="pull-right"
+        value="ctrl.searchKey"
+        value-change="ctrl.searchChange()"
+        placeholder="{{ 'SEARCH' | translate }}"></qn-search-box>-->
+      <button class="btn btn-mute btn-default pull-right" ng-click="ctrl.pageChanged()" translate="REFRESH"></button>
+    </div>
+
+    <div class="content">
+      <user-explorer user-model="ctrl.data.items" user-loaded="ctrl.loaded" user-actions="ctrl.actions"></user-explorer>
+      <div uib-pagination
+        force-ellipses="true"
+        total-items="ctrl.data.total"
+        items-per-page="ctrl.data.perpage"
+        ng-model="ctrl.data.page"
+        ng-change="ctrl.pageChanged()"
+        max-size="5"
+        class="pagination-sm pull-right"></div>
+    </div>
+
+  </div>
+</div>

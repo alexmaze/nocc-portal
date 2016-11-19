@@ -1,0 +1,35 @@
+<div class="events-box">
+    <div class="tabs">
+      <div class="tab" ng-class="{'smart': 'active'}[currentTab]" ng-click="currentTab = 'smart'">Smart View</div>
+      <div class="tab" ng-class="{'all': 'active'}[currentTab]" ng-click="currentTab = 'all'">All</div>
+    </div>
+    <div class="contents">
+
+        <table>
+          <tbody>
+            <tr ng-show="(data.items.length == 0) && loaded">
+              <td colspan="2" class="text-center text-sub" translate>EMPTY</td>
+            </tr>
+            <tr ng-repeat="s in data.items" ng-class="s.level.toLowerCase()">
+              <td>
+                <span>{{s.createdAt | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                <span>{{s.summary}}</span>
+              </td>
+              <td ng-hide="currentTab == 'all'">
+                <i title="{{'IGNORE' | translate}}" class="fa fa-bell-slash-o" ng-hide="s.ignored" ng-click="ignore(s)"></i>
+              </td>
+            </tr>
+            <tr ng-show="loaded && data.page < (data.total/data.perpage)">
+              <td colspan="2" class="more"><a ng-click="more()" translate="SHOW_MORE"></a></td>
+            </tr>
+            <tr ng-show="!loaded">
+              <td colspan="2" class="text-center text-sub">
+                <qn-loading></qn-loading>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+
+</div>

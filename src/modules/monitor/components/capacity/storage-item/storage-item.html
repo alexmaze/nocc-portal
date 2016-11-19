@@ -1,0 +1,22 @@
+<div class="storage-item-directive">
+  <div class="preview" ng-click="isOpen = !isOpen" ng-class="{'active': isOpen}">
+    <div ng-if="data.total === undefined">
+      <qn-loading></qn-loading>
+    </div>
+    <div ng-if="data.total !== undefined">
+      <span class="title">{{data.key | translate}}</span>
+      <span class="status">
+        <span>{{'TOTAL_CAPACITY' | translate}} : {{data.total | fileSize:2:'T'}}</span>
+        <span>{{'AVALIABLE_CAPACITY' | translate}} : {{data.free | fileSize:2:'T'}}</span>
+      </span>
+      <i class="fa toggle-icon {{isOpen ? 'fa-angle-up' : 'fa-angle-down'}}"></i>
+    </div>
+  </div>
+  <div class="content" uib-collapse="!isOpen" expanding="ctrl.expand()">
+    <div class="trend-head clearfix">
+      <div class="title"><span translate>CAPACITY</span>{{'WHITE_SPACE' | translate}}<span translate>TREND</span></div>
+      <div ng-model="ctrl.dateRange" class="pull-right" range-datetimepicker options="ctrl.dateRangeOptions"></div>
+    </div>
+    <qn-chart qn-chart-config='ctrl.chart'></qn-chart>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<button type="button" class="close" ng-click="$dismiss()"><i class="qi qi-close"></i></button>
+
+<div class="modal-center-wrapper">
+  <div class="modal-header">
+    <h6 class="modal-title text-center bold">
+      <span translate>EDIT_USER</span>
+    </h6>
+  </div>
+
+  <div class="modal-body user-modal modal-user-create">
+    <div class="form-group form-inline text-center center-block">
+      <form name="form" class="center-form clearfix">
+
+        <div class="row">
+          <div class="item-title col-md-3">
+            <span translate="USER_NAME"></span>
+          </div>
+          <div class="item-body col-md-9">
+            <div class="form-group form-inline">
+              <input type="text" class="form-control" name="name"
+                disabled="disabled"
+                ng-model="ctrl.user.name">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="item-title col-md-3">
+            <span translate="ROLE"></span>
+          </div>
+          <div class="item-body col-md-9">
+            <div class="form-group form-inline">
+              <label class="radio-btn" ng-class="{ 'selected': type == '3' }" ng-if="ctrl.opUser.role >= 3">
+                <input type="radio" ng-model="ctrl.user.role" value=3
+                ng-disabled="ctrl.isSubmitting" required>
+                <span translate>SYSTEM_ADMIN</span>
+              </label>
+              <label class="radio-btn" ng-class="{ 'selected': type == '2' }" ng-if="ctrl.opUser.role >= 2">
+                <input type="radio" ng-model="ctrl.user.role" value=2
+                  ng-disabled="ctrl.isSubmitting" required>
+                <span translate>NORMAL_ADMIN</span>
+              </label>
+              <label class="radio-btn" ng-class="{ 'selected': type == '1' }" ng-if="ctrl.conf.complexMode && ctrl.opUser.role >= 1">
+                <input type="radio" ng-model="ctrl.user.role" value=1
+                  ng-disabled="ctrl.isSubmitting" required>
+                <span translate>NAMESPACE_ADMIN</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-if="ctrl.user.role == 1">
+          <div class="item-title col-md-3">
+            <span translate="NAMESPACE"></span>
+          </div>
+          <div class="item-body col-md-9">
+            <qn-loading ng-if="!ctrl.namespaces"></qn-loading>
+            <div class="form-group form-inline" ng-show="ctrl.namespaces">
+              <select class="form-control" name="namespace"
+                ng-disabled="ctrl.isSubmitting"
+                ng-model="ctrl.user.namespace" required>
+                <option ng-repeat="ns in ctrl.namespaces" value={{ns.id}}>{{ns.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <qn-loading ng-show="ctrl.isSubmitting"></qn-loading>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <div class="text-center">
+      <button type="button" class="btn btn-default btn-lg btn-mute"
+        ng-click="$dismiss()"
+        translate="CANCEL"
+        ng-disabled="ctrl.isSubmitting"></button>
+      <button type="button" class="btn btn-primary btn-lg btn-emphasis"
+        ng-click="ctrl.submit()"
+        ng-disabled="ctrl.isSubmitting || form.$invalid"
+        translate="CONFIRM"></button>
+    </div>
+  </div>
+</div>
+

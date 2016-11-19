@@ -1,0 +1,45 @@
+@import (reference) "~base/variables.less";
+
+.storage-item-directive {
+  margin-bottom: 20px;
+  .preview {
+    font-size: @font-size-base;
+    color: @text-level-1-color;
+    border: 1px solid @border-level-3-color;
+    padding: 15px 20px;
+    transition: .2s background-color;
+    cursor: pointer;
+    &:hover, &.active {
+      background-color: #fbfbfb;
+    }
+    .title {
+      display: inline-block;
+      min-width: 120px;
+    }
+    .fa {
+      margin-right: 10px;
+    }
+    .status {
+      color: #96A1B8;
+      span {
+        margin-right: 15px;
+      }
+    }
+    .toggle-icon {
+      float: right;
+      font-size: 20px;
+    }
+  }
+  .content {
+    border: 1px solid @border-level-3-color;
+    border-top: none;
+    .trend-head {
+      padding: 20px 20px 0;
+      .title {
+        font-size: 14px;
+        margin-top: 6px;
+        display: inline-block;
+      }
+    }
+  }
+}

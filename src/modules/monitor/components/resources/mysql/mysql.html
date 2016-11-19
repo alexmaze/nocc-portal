@@ -1,0 +1,54 @@
+<div class="q-page mysql">
+  <div class="resource-body">
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a translate="{{ctrl.tabs[0]}}"></a>
+      </li>
+
+      <button class="btn btn-sm btn-mute btn-default pull-right" ng-click="ctrl.onUpdate()" translate="REFRESH"></button>
+    </ul>
+
+    <!-- 实时状态 -->
+    <div class="tab-content">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th translate>INSTANCES</th>
+            <th translate>STATUS</th>
+            <th translate>ROLE</th>
+            <th translate>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="insts in ctrl.realtimeTab.data">
+          <tr ng-repeat="inst in insts">
+            <td class="row-icon"></td>
+            <td>
+              <a ng-click="ctrl.gotoInstance(inst)">{{inst.host}}</a><br>
+            </td>
+            <td>
+              <status-tag
+                label="inst.status.toUpperCase()"
+                type="inst.status | commonStatusTypeFilter">
+              </status-tag>
+            </td>
+            <td>{{inst.role}}</td>
+            <td><a ng-click="ctrl.gotoServer(inst.host)" translate>SERVER_DETAIL</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr ng-if="(ctrl.realtimeTab.data.length == 0) && ctrl.realtimeTab.loaded">
+            <td colspan="5" class="text-center text-sub" translate>EMPTY</td>
+          </tr>
+          <tr ng-if="!ctrl.realtimeTab.loaded">
+            <td colspan="5" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+</div>
