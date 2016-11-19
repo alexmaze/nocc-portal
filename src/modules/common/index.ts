@@ -14,6 +14,7 @@ import qnNavbar from 'opdev-front/src/components/qn-navbar';
 import qnSearchBox from 'opdev-front/src/components/qn-searchbox';
 import filters from 'opdev-front/src/components/filters';
 import qnLoading from 'opdev-front/src/components/qn-loading';
+import qnModal from 'opdev-front/src/components/qn-modal';
 import utils from 'opdev-front/src/utils';
 import statusTag from 'opdev-front/src/components/status-tag';
 import validateSameWith from 'opdev-front/src/components/validate-same-with';
@@ -66,6 +67,7 @@ const baseModules = [
   qnSearchBox,
   statusTag,
   utils,
+  qnModal,
   validateSameWith
 ];
 

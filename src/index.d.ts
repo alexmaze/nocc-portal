@@ -25,7 +25,7 @@ declare namespace qos {
 
 declare namespace qos.user {
     interface IUser {
-      id?: string;
+      _id?: string;
       name?: string;
       role?: number;
       namespace?: string;

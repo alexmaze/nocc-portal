@@ -12,15 +12,11 @@ export class UserExplorerController implements qos.user.IUserExplorerBinding {
 
   namespaces: qos.namespace.INamespace[];
 
-  conf: qos.ISystemConfig;
-
   /* @ngInject */
   constructor(
-    private systemConfigService: qos.service.ISystemConfigService,
     private $log: angular.ILogService,
     private $scope: any,
     private httpHelper: base.IHttpHelper) {
-    this.conf = systemConfigService.config;
     this.changeOrder('name');
     this.allSelected = false;
   }

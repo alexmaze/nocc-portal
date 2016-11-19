@@ -12,10 +12,7 @@ export default class MainController {
 
     // check cached user info
     let user = userService.userInfo();
-    this.userFeatures = userFeaturesService.get(
-      user.role,
-      systemConfigService.config.complexMode,
-      user.isSuper);
+    this.userFeatures = userFeaturesService.get();
   }
 
 

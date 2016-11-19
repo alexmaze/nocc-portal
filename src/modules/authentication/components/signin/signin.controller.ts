@@ -36,7 +36,7 @@ export class SigninController {
 
     // call signin api
     this.httpHelper.call<qos.user.IUser>('PUT', '/api/session', {
-      username: this.username,
+      name: this.username,
       password: this.password
     }).$promise.success((data: qos.user.IUser) => {
       this.userService.cacheUserInfo(data);
@@ -48,18 +48,7 @@ export class SigninController {
     if (!user) {
       return false;
     }
-
-    let features = this.userFeaturesService.get(user.role, this.systemConfigService.config.complexMode);
-    if (features && features[0]) {
-      if (features[0].state && this.$state.get(features[0].state)) {
-        this.$state.go(features[0].state);
-        return true;
-      } else if (features[0].features[0].state && this.$state.get(features[0].features[0].state)) {
-        this.$state.go(features[0].features[0].state);
-        return true;
-      }
-    }
-    return false;
+    this.$state.go('main.user');
   }
 
   static getDepns () {

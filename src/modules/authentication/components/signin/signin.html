@@ -1,5 +1,8 @@
 <div class="signin-page">
-  <qn-header title="QOS"></qn-header>
+  <header class="qn-header ng-isolate-scope">
+    <!--<img src="">-->
+    <span>NOCC</span>
+  </header>
 
   <form name="form" ng-submit="ctrl.submit()">
     <div class="form-group"
@@ -7,7 +10,7 @@
       <input type="text"
         name="username"
         class="form-control"
-        placeholder="{{ 'USER_NAME' | translate }}"
+        placeholder="用户名"
         ng-model="ctrl.username"
         required
         ng-attr-autofocus="{{ctrl.username?undefined:true}}"
@@ -19,7 +22,7 @@
       <input type="password"
         name="password"
         class="form-control"
-        placeholder="{{ 'PASSWORD' | translate }}"
+        placeholder="密码"
         ng-model="ctrl.password"
         required
         keydown-enter="ctrl.validateAndSubmit()"
@@ -29,11 +32,13 @@
     <div class="form-group">
       <button class="btn btn-primary btn-emphasis signin-btn"
         ng-disabled="form.$invalid"
-        type="submit"
-        translate="SIGNIN">
+        type="submit">
+        登录
       </button>
     </div>
   </form>
 
-  <qn-footer show-lang="false"></qn-footer>
+  <footer class="qn-footer">
+    <span>Copyright © 2016 NOCC. 保留所有权利。</span>
+  </footer>
 </div>

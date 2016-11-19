@@ -35,11 +35,7 @@ export class ChangePasswordController {
       old: this.oldPassword,
       new: this.newPassword
     }).$promise.success(() => {
-      this.toaster.info('密码更新成功，请重新登录！');
-
-      this.httpHelper.call<void>('DELETE', '/api/session');
-      this.userService.clearUserInfo();
-      this.$state.go('signin');
+      this.toaster.info('密码更新成功');
     });
   }
 

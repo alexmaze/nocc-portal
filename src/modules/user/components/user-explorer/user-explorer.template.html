@@ -2,25 +2,25 @@
   <thead>
     <tr>
       <th></th>
-      <th ng-click="$ctrl.changeOrder('name')" translate>NAME</th>
-      <th ng-click="$ctrl.changeOrder('role')" translate>ROLE</th>
-      <th ng-show="$ctrl.conf.complexMode" ng-click="$ctrl.changeOrder('namespace')" translate>PRIVILEGE</th>
-      <th translate>ACTIONS</th>
+      <th>用户名</th>
+      <th>邮箱</th>
+      <th>权限</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-if="($ctrl.userModel.length == 0) && $ctrl.userLoaded">
       <td colspan="5" class="text-center text-sub" translate>EMPTY</td>
     </tr>
-    <tr ng-repeat="user in $ctrl.userModel | orderBy: $ctrl.orderArray">
-      <td class="row-icon"><i class="fa fa-user {{user.role == 2 ? 'sys' : 'ns'}}"></i></td>
+    <tr ng-repeat="user in $ctrl.userModel">
+      <td class="row-icon"><i class="fa fa-user}"></i></td>
       <td class="user-name">{{user.name}}</td>
-      <td translate>{{user.role | userRoleFilter }}</td>
-      <td translate ng-show="$ctrl.conf.complexMode">{{user._scope}}</td>
+      <td translate >{{user.email}}</td>
+      <td translate>{{user.role === 'admin' ? "管理员" : "普通用户" }}</td>
       <td>
-        <a class="btn-action action" ng-click="$ctrl.userActions.edit(user)" translate>EDIT</a>
-        <a class="btn-action action" ng-click="$ctrl.userActions.password(user)" translate>CHANGE_PASSWORD</a>
-        <a class="btn-action action" ng-click="$ctrl.userActions.delete([user])" translate>DELETE</a>
+        <a class="btn-action action" ng-click="$ctrl.userActions.edit(user)" translate>编辑</a>
+        <!--<a class="btn-action action" ng-click="$ctrl.userActions.password(user)" translate>修改密码</a>-->
+        <a class="btn-action action" ng-click="$ctrl.userActions.delete([user])" translate>删除</a>
       </td>
     </tr>
     <tr ng-if="!$ctrl.userLoaded">

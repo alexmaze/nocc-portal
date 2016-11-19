@@ -3,7 +3,7 @@
 <div class="modal-center-wrapper">
   <div class="modal-header">
     <h6 class="modal-title text-center bold">
-      <span translate>EDIT_USER</span>
+      <span>修改用户信息</span>
     </h6>
   </div>
 
@@ -13,7 +13,7 @@
 
         <div class="row">
           <div class="item-title col-md-3">
-            <span translate="USER_NAME"></span>
+            <span>用户名</span>
           </div>
           <div class="item-body col-md-9">
             <div class="form-group form-inline">
@@ -26,40 +26,37 @@
 
         <div class="row">
           <div class="item-title col-md-3">
-            <span translate="ROLE"></span>
+            <span>邮箱</span>
+          </div>
+          <div class="item-body col-md-9">
+            <div class="form-group form-inline"
+              ng-class="{ 'has-error': form.email.$invalid && form.email.$dirty }">
+              <input type="text" class="form-control" name=" email"
+                ng-disabled="ctrl.isSubmitting"
+                ng-model="ctrl.user.email"
+                required
+                ng-model-options="ctrl.ngModelOptions">
+            </div>
+            <p class="help-block text-left text-danger" ng-show="form.email.$invalid && form.email.$dirty">邮箱不能为空</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="item-title col-md-3">
+            <span>权限</span>
           </div>
           <div class="item-body col-md-9">
             <div class="form-group form-inline">
-              <label class="radio-btn" ng-class="{ 'selected': type == '3' }" ng-if="ctrl.opUser.role >= 3">
-                <input type="radio" ng-model="ctrl.user.role" value=3
+              <label class="radio-btn" ng-class="{ 'selected': type == '3' }">
+                <input type="radio" ng-model="ctrl.user.role" value="admin"
                 ng-disabled="ctrl.isSubmitting" required>
-                <span translate>SYSTEM_ADMIN</span>
+                <span>管理员</span>
               </label>
-              <label class="radio-btn" ng-class="{ 'selected': type == '2' }" ng-if="ctrl.opUser.role >= 2">
-                <input type="radio" ng-model="ctrl.user.role" value=2
+              <label class="radio-btn" ng-class="{ 'selected': type == '2' }">
+                <input type="radio" ng-model="ctrl.user.role" value="user"
                   ng-disabled="ctrl.isSubmitting" required>
-                <span translate>NORMAL_ADMIN</span>
+                <span>普通用户</span>
               </label>
-              <label class="radio-btn" ng-class="{ 'selected': type == '1' }" ng-if="ctrl.conf.complexMode && ctrl.opUser.role >= 1">
-                <input type="radio" ng-model="ctrl.user.role" value=1
-                  ng-disabled="ctrl.isSubmitting" required>
-                <span translate>NAMESPACE_ADMIN</span>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="row" ng-if="ctrl.user.role == 1">
-          <div class="item-title col-md-3">
-            <span translate="NAMESPACE"></span>
-          </div>
-          <div class="item-body col-md-9">
-            <qn-loading ng-if="!ctrl.namespaces"></qn-loading>
-            <div class="form-group form-inline" ng-show="ctrl.namespaces">
-              <select class="form-control" name="namespace"
-                ng-disabled="ctrl.isSubmitting"
-                ng-model="ctrl.user.namespace" required>
-                <option ng-repeat="ns in ctrl.namespaces" value={{ns.id}}>{{ns.name}}</option>
-              </select>
             </div>
           </div>
         </div>
@@ -73,12 +70,11 @@
     <div class="text-center">
       <button type="button" class="btn btn-default btn-lg btn-mute"
         ng-click="$dismiss()"
-        translate="CANCEL"
-        ng-disabled="ctrl.isSubmitting"></button>
+        ng-disabled="ctrl.isSubmitting">取消</button>
       <button type="button" class="btn btn-primary btn-lg btn-emphasis"
         ng-click="ctrl.submit()"
         ng-disabled="ctrl.isSubmitting || form.$invalid"
-        translate="CONFIRM"></button>
+        >确认</button>
     </div>
   </div>
 </div>

@@ -13,8 +13,6 @@ export class UserListController {
   opUser: qos.user.IUser;
   data: base.IPageData<qos.user.IUser>;
 
-  namespaces: qos.namespace.INamespace[];
-
   /* @ngInject */
   constructor(
     private userModal: any,
@@ -24,10 +22,7 @@ export class UserListController {
     private httpHelper: base.IHttpHelper,
     private userService: qos.service.IUserService) {
     this.bindUserActions();
-    this.loadNamespaces().success(() => {
-      this.loadPage(1);
-    });
-
+    this.loadPage(1);
     this.opUser = userService.userInfo();
   }
 
@@ -45,12 +40,10 @@ export class UserListController {
         this.userModal.changePassword(user);
       },
       'delete': (users: qos.user.IUser[]) => {
-        this.$translate(['DELETE', 'PROMT_DELETE_USER'], { name: users[0].name }).then((res: any) => {
-          this.qnModal.confirm(res.DELETE, res.PROMT_DELETE_USER, 'danger', 'sm').then(() => {
-            this.deleteUser(users[0].id).success(() => {
-              _.pull(this.data.items, users[0]);
-              this.data.total--;
-            });
+        this.qnModal.confirm('删除确认', '您确定要删除该用户吗？', 'danger', 'sm').then(() => {
+          this.deleteUser(users[0]._id).success(() => {
+            _.pull(this.data.items, users[0]);
+            this.data.total--;
           });
         });
       }
@@ -65,29 +58,17 @@ export class UserListController {
 
   loadPage(page: number) {
     this.loaded = false;
-    return this.httpHelper.call<base.IPageData<qos.user.IUser>>('GET', '/api/account', {
+    return this.httpHelper.call<base.IPageData<qos.user.IUser>>('GET', '/api/user', {
       page: page,
       perpage: UserListController.DEFAULT_PER_PAGE
     }).$promise.success((data: base.IPageData<qos.user.IUser>) => {
       this.loaded = true;
       this.data = data;
-
-      // change user._scope
-      for (let user of this.data.items) {
-        if (user.role === UserRole.system_admin) {
-          user._scope = 'SYSTEM';
-        } else {
-          let ns = _.find(this.namespaces, { id: user.namespace });
-          if (ns) {
-            user._scope = `${ns.name}`;
-          }
-        }
-      }
     });
   }
 
   deleteUser(id: string) {
-    return this.httpHelper.call<void>('DELETE', '/api/account/:id', {
+    return this.httpHelper.call<void>('DELETE', '/api/user/:id', {
       id: id
     }).$promise;
   }
@@ -95,13 +76,5 @@ export class UserListController {
   pageChanged() {
     this.data.items = undefined;
     this.loadPage(this.data.page);
-  }
-
-  loadNamespaces() {
-    return this.httpHelper.call<base.IPageData<qos.namespace.INamespace>>('GET', '/api/namespace', {
-      status: 'avaliable'
-    }).$promise.success((data: base.IPageData<qos.namespace.INamespace>) => {
-      this.namespaces = data.items;
-    });
   }
 }

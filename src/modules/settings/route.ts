@@ -10,7 +10,7 @@ export function routes(
       controller: 'ChangePasswordController as ctrl',
       data: {
         icon: 'fa-key',
-        title: 'CHANGE_PASSWORD'
+        title: '修改密码'
       }
     })
     .state('main.about', {
@@ -18,7 +18,7 @@ export function routes(
       template: require('./components/about/about.html'),
       data: {
         icon: 'fa-info',
-        title: 'ABOUT_SYSTEM'
+        title: '关于系统'
       }
     });
 }

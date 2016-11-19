@@ -22,6 +22,7 @@ import 'ui-select/dist/select.css';
 import commonModule from './modules/common';
 import authenticationModule from './modules/authentication';
 import userModule from './modules/user';
+import settingsModule from './modules/settings';
 
 namespace base {
   let thirdParties = [
@@ -38,7 +39,8 @@ namespace base {
   let subModules = [
     commonModule,
     authenticationModule,
-    userModule];
+    userModule,
+    settingsModule];
 
   angular.module('qos', [
     ...thirdParties,

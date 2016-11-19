@@ -14,7 +14,7 @@ export function routes(
       controller: 'UserListController as ctrl',
       data: {
         icon: 'fa-user',
-        title: 'USER'
+        title: '用户'
       }
     });
 }
