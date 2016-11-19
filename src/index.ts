@@ -20,13 +20,8 @@ import 'ui-select/dist/select.css';
 
 // sub modules
 import commonModule from './modules/common';
-import apiModule from './modules/api';
 import authenticationModule from './modules/authentication';
-import monitorModule from './modules/monitor';
-import settingsModule from './modules/settings';
-import namespaceModule from './modules/namespace';
 import userModule from './modules/user';
-import namespaceAdminModule from './modules/namespace-admin';
 
 namespace base {
   let thirdParties = [
@@ -41,14 +36,9 @@ namespace base {
     'LocalStorageModule'];
 
   let subModules = [
-    apiModule,
     commonModule,
     authenticationModule,
-    settingsModule,
-    namespaceModule,
-    monitorModule,
-    userModule,
-    namespaceAdminModule];
+    userModule];
 
   angular.module('qos', [
     ...thirdParties,

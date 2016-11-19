@@ -28,6 +28,6 @@ export function runBlock(
       }
   });
 
-  systemConfigService.fetch();
+  // systemConfigService.fetch();
   userService.checkSessionSync();
 }
