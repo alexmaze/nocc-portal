@@ -5,11 +5,6 @@ export class UserExplorerController implements qos.user.IUserExplorerBinding {
   userLoaded: boolean;
   userActions: qos.user.IUserActions;
 
-  orderArray: string[];
-  orderBy: string;
-  orderReverse: boolean;
-  allSelected: boolean;
-
   namespaces: qos.namespace.INamespace[];
 
   /* @ngInject */
@@ -17,20 +12,6 @@ export class UserExplorerController implements qos.user.IUserExplorerBinding {
     private $log: angular.ILogService,
     private $scope: any,
     private httpHelper: base.IHttpHelper) {
-    this.changeOrder('name');
-    this.allSelected = false;
   }
 
-  /**
-   * 修改列表排序
-   */
-  changeOrder(newOrder: string) {
-    if (this.orderBy === newOrder) {
-      this.orderReverse = !this.orderReverse;
-    } else {
-      this.orderBy = newOrder;
-      this.orderReverse = false;
-    }
-    this.orderArray = [(this.orderReverse ? '-' : '') + this.orderBy];
-  }
 }

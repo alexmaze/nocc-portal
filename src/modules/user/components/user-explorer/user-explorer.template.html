@@ -10,17 +10,16 @@
   </thead>
   <tbody>
     <tr ng-if="($ctrl.userModel.length == 0) && $ctrl.userLoaded">
-      <td colspan="5" class="text-center text-sub" translate>无数据</td>
+      <td colspan="5" class="text-center text-sub">无数据</td>
     </tr>
     <tr ng-repeat="user in $ctrl.userModel">
       <td class="row-icon"><i class="fa fa-user}"></i></td>
       <td class="user-name">{{user.name}}</td>
-      <td translate >{{user.email}}</td>
-      <td translate>{{user.role === 'admin' ? "管理员" : "普通用户" }}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role === 'admin' ? "管理员" : "普通用户" }}</td>
       <td>
-        <a class="btn-action action" ng-click="$ctrl.userActions.edit(user)" translate>编辑</a>
-        <!--<a class="btn-action action" ng-click="$ctrl.userActions.password(user)" translate>修改密码</a>-->
-        <a class="btn-action action" ng-click="$ctrl.userActions.delete([user])" translate>删除</a>
+        <a class="btn-action action" ng-click="$ctrl.userActions.edit(user)">编辑</a>
+        <a class="btn-action action" ng-click="$ctrl.userActions.delete([user])">删除</a>
       </td>
     </tr>
     <tr ng-if="!$ctrl.userLoaded">
