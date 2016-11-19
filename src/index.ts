@@ -23,6 +23,7 @@ import commonModule from './modules/common';
 import authenticationModule from './modules/authentication';
 import userModule from './modules/user';
 import settingsModule from './modules/settings';
+import eventModule from './modules/event';
 
 namespace base {
   let thirdParties = [
@@ -40,6 +41,7 @@ namespace base {
     commonModule,
     authenticationModule,
     userModule,
+    eventModule,
     settingsModule];
 
   angular.module('qos', [

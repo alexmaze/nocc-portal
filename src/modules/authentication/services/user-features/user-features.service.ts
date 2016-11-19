@@ -6,6 +6,10 @@ let userFeatures = [
     name: 'MANAGE',
     features: [
       {
+        name: '事件',
+        state: 'main.event',
+        icon: 'fa-newspaper-o'
+      }, {
         name: '用户',
         state: 'main.user',
         icon: 'fa-user'

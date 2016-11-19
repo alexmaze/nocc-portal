@@ -54,6 +54,36 @@ declare namespace qos.user {
     }
 }
 
+
+
+declare namespace qos {
+  interface IImage {
+    description: String,
+    description_en: String,
+    url: String
+  }
+
+  interface IEvent {
+    title: string;
+    location: string;
+    content: string;
+
+    title_en: string;
+    location_en: string;
+    content_en: string;
+
+    _id?: string;
+    time: String;
+    created: Date;
+    poster: IImage;
+    images: IImage[];
+  }
+
+}
+
+
+
+
 declare namespace qos.service {
   interface IUserService {
     cacheUserInfo: (user: qos.user.IUser) => void;
