@@ -4,11 +4,13 @@ import Register from 'opdev-front/src/utils/register';
 import { routes } from './route';
 
 import { ShowcaseController } from './components/showcase/showcase.controller';
+import { MissionController } from './components/mission/mission.controller';
 
 let MODULE_NAME = 'evm.other';
 (new Register(MODULE_NAME, []))
   .config(routes)
   .controller('ShowcaseController', ShowcaseController)
+  .controller('MissionController', MissionController)
   .build(angular);
 
 export default MODULE_NAME;

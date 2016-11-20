@@ -83,6 +83,12 @@ declare namespace qos {
     images: IImage[];
   }
 
+  interface IMission {
+    images: IImage[];
+    text: string;
+    text_en: string;
+  }
+
 }
 
 

@@ -12,15 +12,15 @@ export function routes(
         title: '首页'
       }
     })
-    // .state('main.mission', {
-    //   url: 'mission',
-    //   template: require('./components/mission/mission.html'),
-    //   controller: 'MissionController as ctrl',
-    //   data: {
-    //     icon: 'fa-flag-o',
-    //     title: '使命'
-    //   }
-    // })
+    .state('main.mission', {
+      url: 'mission',
+      template: require('./components/mission/mission.html'),
+      controller: 'MissionController as ctrl',
+      data: {
+        icon: 'fa-flag-o',
+        title: '使命'
+      }
+    })
     // .state('main.faculty', {
     //   url: 'faculty',
     //   template: require('./components/faculty/faculty.html'),
