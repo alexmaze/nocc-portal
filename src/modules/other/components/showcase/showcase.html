@@ -1,0 +1,31 @@
+<div class="q-page showcase">
+  <div class="resource-body">
+
+    <form name="form">
+      <!-- 图片 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            轮播图
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <image-selector items="ctrl.data.images"></image-selector>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <section class="q-item">
+        <div class="pull-right">
+          <button ng-disabled="form.$invalid || ctrl.isSubmitting" class="btn btn-lg btn-primary btn-emphasis" ng-click="ctrl.submit()">
+            更新
+          </button>
+        </div>
+        <br>
+      </section>
+
+    </form>
+  </div>
+</div>

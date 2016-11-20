@@ -79,6 +79,10 @@ declare namespace qos {
     images: IImage[];
   }
 
+  interface IShowcase {
+    images: IImage[];
+  }
+
 }
 
 
