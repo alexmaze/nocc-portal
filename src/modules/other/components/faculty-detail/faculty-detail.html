@@ -1,0 +1,137 @@
+<div class="q-page event-detail">
+  <div class="resource-body">
+
+    <form name="form">
+      <!-- 中文 title -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文 Title
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline"
+               ng-class="{ 'has-error': form.name.$invalid && form.name.$dirty }">
+               <input type="text" class="form-control" name="name"
+                ng-model="ctrl.faculty.title"
+                auto-focus="true">
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文 Title -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文 Title
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline"
+               ng-class="{ 'has-error': form.enname.$invalid && form.enname.$dirty }">
+               <input type="text" class="form-control" name="enname"
+                ng-model="ctrl.faculty.title_en">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 中文职位 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文职位
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.faculty.position">
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文职位 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文职位
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.faculty.position_en">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 中文 简介 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文简介
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea ui-tinymce="tinymceOptions" ng-model="ctrl.faculty.description" style="height: 200px;"></textarea>
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文 简介 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文简介
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea class="form-control" ui-tinymce="tinymceOptions" ng-model="ctrl.faculty.description_en" style="height: 200px;"></textarea>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <!-- email -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            Email
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.faculty.email">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <!-- Photo -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            Photo
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <single-image-selector url="ctrl.faculty.photo"></single-image-selector>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <section class="q-item">
+        <div class="pull-right">
+          <a ui-sref="^.main" ng-disabled="ctrl.isSubmitting" class="btn btn-lg btn-default btn-mute">取消</a>
+          <button ng-disabled="form.$invalid || ctrl.isSubmitting" class="btn btn-lg btn-primary btn-emphasis" ng-click="ctrl.submit()">
+            确认提交
+          </button>
+        </div>
+        <br>
+      </section>
+
+    </form>
+  </div>
+</div>

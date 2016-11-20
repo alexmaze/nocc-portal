@@ -45,6 +45,7 @@ import { CommonCheckModalService } from './components/common-check-modal/common-
 
 import { navbarActions } from './components/navbar-actions/navbar-actions.directive';
 import { imageSelector } from './components/image-selector/image-selector.directive';
+import { singleImageSelector } from './components/single-image-selector/single-image-selector.directive';
 
 import { commonStatusFilter } from './components/common-status/common-status.filter';
 import { commonStatusTypeFilter } from './components/common-status/common-status-type.filter';
@@ -87,6 +88,7 @@ const MODULE_NAME = 'qos.common';
   .controller('MainController', MainController)
   .directive('navbarActions', navbarActions)
   .directive('imageSelector', imageSelector)
+  .directive('singleImageSelector', singleImageSelector)
   .constant('typeConstants', typeConstants)
   .filter('type', type)
   .build(angular);

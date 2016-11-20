@@ -12,6 +12,8 @@ export class FacultyController {
 
   /* @ngInject */
   constructor(
+    private $rootScope: angular.IRootScopeService,
+    private $uibModal: angular.ui.bootstrap.IModalService,
     private $scope: angular.IScope,
     private $state: angular.ui.IStateService,
     private $translate: angular.translate.ITranslateService,
@@ -25,11 +27,11 @@ export class FacultyController {
   }
 
   create() {
-    // this.$state.go('main.event.create');
+    this.$state.go('main.faculty.create');
   }
 
   edit(faculty: qos.IFaculty) {
-    // this.$state.go('main.event.detail', { id: event._id });
+    this.$state.go('main.faculty.detail', { id: faculty._id });
   }
 
   loadPage(page: number) {
@@ -58,4 +60,18 @@ export class FacultyController {
     this.data.items = undefined;
     this.loadPage(this.data.page);
   }
+
+
+  openModal(scope: any, template: string, controller: any, size: base.ui.QnModalSize = 'md') {
+    return this.$uibModal.open({
+      template,
+      scope,
+      windowClass: 'modal-center',
+      size,
+      backdrop: false,
+      keyboard: false,
+      controller,
+      controllerAs: 'ctrl'
+    });
+  };
 }

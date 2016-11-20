@@ -1,0 +1,14 @@
+<div class="single-image-selector-directive">
+
+  <div class="image-item"
+    ng-class="{'empty': (ctrl.file == undefined && url == undefined),
+      'full': ctrl.file != undefined && url == undefined}"
+    >
+    <div class="image" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="ctrl.file">
+      <!--<img ngf-src="url"/>-->
+      <div class="img" style="background-image: url({{url}})"></div>
+    </div>
+    <button class="upload" ng-click="ctrl.upload()">上传</button>
+  </div>
+
+</div>

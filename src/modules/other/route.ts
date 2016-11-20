@@ -21,8 +21,14 @@ export function routes(
         title: '使命'
       }
     })
+
     .state('main.faculty', {
       url: 'faculty',
+      template: '<div class="faculty" ui-view></div>',
+      redirectTo: 'main.faculty.main'
+    })
+    .state('main.faculty.main', {
+      url: '/',
       template: require('./components/faculty/faculty.html'),
       controller: 'FacultyController as ctrl',
       data: {
@@ -30,6 +36,28 @@ export function routes(
         title: '关于 全体'
       }
     })
+    .state('main.faculty.detail', {
+      url: '/detail?id',
+      template: require('./components/faculty-detail/faculty-detail.html'),
+      controller: 'FacultyDetailController as ctrl',
+      data: {
+        icon: 'fa-id-card-o',
+        title: '编辑',
+        parents: ['^.main']
+      }
+    })
+    .state('main.faculty.create', {
+      url: '/create',
+      template: require('./components/faculty-detail/faculty-detail.html'),
+      controller: 'FacultyDetailController as ctrl',
+      data: {
+        icon: 'fa-id-card-o',
+        title: '新建',
+        parents: ['^.main']
+      }
+    })
+
+
     // .state('main.lab', {
     //   url: 'lab',
     //   template: require('./components/lab/lab.html'),

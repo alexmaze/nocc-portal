@@ -1,0 +1,61 @@
+.single-image-selector-directive {
+  display: flex;
+  flex-wrap: wrap;
+
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    display: block !important;
+  }
+
+  .image-item {
+    /*box-shadow: 0 0 5px rgba(0,0,0,0.15);*/
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 5px 5px 0 0;
+    &.empty::before {
+      content: '选择图片';
+      position: absolute;
+      top: 90px;
+      left: 70px;
+      color: #8D9199;
+      font-size: 16px;
+    }
+    &.full::before {
+      content: '等待上传';
+      position: absolute;
+      top: 90px;
+      left: 70px;
+      color: #8D9199;
+      font-size: 16px;
+    }
+    .image {
+      width: 202px;
+      height: 202px;
+      border: 1px solid #E6E9F0;
+      line-height: 200px;
+      text-align: center;
+      position: relative;
+      &:hover {
+        background-color: #F5F7FA;
+      }
+      .img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+    }
+    .upload {
+      width: 200px;
+      background: #238EFA;
+      border: none;
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+
+}
