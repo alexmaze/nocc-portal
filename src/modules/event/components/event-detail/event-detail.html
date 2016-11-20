@@ -1,0 +1,128 @@
+<div class="q-page event-detail">
+  <div class="resource-body">
+
+    <form name="form">
+      <!-- 中文标题 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文标题
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline"
+               ng-class="{ 'has-error': form.name.$invalid && form.name.$dirty }">
+               <input type="text" class="form-control" name="name"
+                ng-model="ctrl.event.title"
+                required
+                auto-focus="true"
+                ng-model-options="ctrl.ngModelOptions">
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文标题 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文标题
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline"
+               ng-class="{ 'has-error': form.enname.$invalid && form.enname.$dirty }">
+               <input type="text" class="form-control" name="enname"
+                ng-model="ctrl.event.title_en"
+                required
+                ng-model-options="ctrl.ngModelOptions">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 中文地点 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文地点
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.event.location">
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文地点 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文地点
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.event.location_en">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 中文内容 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文内容
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea class="form-control"
+                ng-model="ctrl.event.content">
+               </textarea>
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文内容 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文内容
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea class="form-control"
+                ng-model="ctrl.event.content_en">
+               </textarea>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 事件时间 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            事件时间
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.event. time">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <section class="q-item">
+        <div class="pull-right">
+          <a ui-sref="^.main" ng-disabled="ctrl.isSubmitting" class="btn btn-lg btn-default btn-mute">取消</a>
+          <button ng-disabled="form.$invalid || ctrl.isSubmitting" class="btn btn-lg btn-primary btn-emphasis" ng-click="ctrl.submit()">
+            确认创建
+          </button>
+        </div>
+        <br>
+      </section>
+    </form>
+  </div>
+</div>

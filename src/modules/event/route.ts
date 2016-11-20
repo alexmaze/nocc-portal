@@ -17,14 +17,25 @@ export function routes(
         title: '事件'
       }
     })
-    // .state('main.event.detail', {
-    //   url: '/',
-    //   template: require('./components/event-detail/event-detail.html'),
-    //   controller: 'EventDetailController as ctrl',
-    //   data: {
-    //     icon: 'fa-newspaper-o',
-    //     title: 'Events'
-    //   }
-    // })
+    .state('main.event.detail', {
+      url: '/detail?id',
+      template: require('./components/event-detail/event-detail.html'),
+      controller: 'EventDetailController as ctrl',
+      data: {
+        icon: 'fa-newspaper-o',
+        title: '编辑',
+        parents: ['^.main']
+      }
+    })
+    .state('main.event.create', {
+      url: '/create',
+      template: require('./components/event-detail/event-detail.html'),
+      controller: 'EventDetailController as ctrl',
+      data: {
+        icon: 'fa-newspaper-o',
+        title: '新建',
+        parents: ['^.main']
+      }
+    })
     ;
 }

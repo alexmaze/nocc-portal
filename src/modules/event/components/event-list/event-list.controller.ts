@@ -23,26 +23,13 @@ export class EventListController {
   searchChange() {
   }
 
-  // bindUserActions() {
-  //   this.actions = {
-  //     'edit': (user: qos.user.IUser) => {
-  //       this.userModal.edit(user).then(() => {
-  //         this.loadPage(this.data.page);
-  //       });
-  //     },
-  //     'password': (user: qos.user.IUser) => {
-  //       this.userModal.changePassword(user);
-  //     },
-  //     'delete': (users: qos.user.IUser[]) => {
-  //       this.qnModal.confirm('删除确认', '您确定要删除该用户吗？', 'danger', 'sm').then(() => {
-  //         this.deleteUser(users[0]._id).success(() => {
-  //           _.pull(this.data.items, users[0]);
-  //           this.data.total--;
-  //         });
-  //       });
-  //     }
-  //   };
-  // }
+  create() {
+    this.$state.go('main.event.create');
+  }
+
+  edit(event: qos.IEvent) {
+    this.$state.go('main.event.detail', { id: event._id });
+  }
 
   loadPage(page: number) {
     this.loaded = false;
