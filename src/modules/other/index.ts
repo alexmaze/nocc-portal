@@ -7,6 +7,7 @@ import { ShowcaseController } from './components/showcase/showcase.controller';
 import { MissionController } from './components/mission/mission.controller';
 import { FacultyController } from './components/faculty/faculty.controller';
 import { FacultyDetailController } from './components/faculty-detail/faculty-detail.controller';
+import { LabController } from './components/lab/lab.controller';
 
 let MODULE_NAME = 'evm.other';
 (new Register(MODULE_NAME, []))
@@ -15,6 +16,7 @@ let MODULE_NAME = 'evm.other';
   .controller('MissionController', MissionController)
   .controller('FacultyController', FacultyController)
   .controller('FacultyDetailController', FacultyDetailController)
+  .controller('LabController', LabController)
   .build(angular);
 
 export default MODULE_NAME;

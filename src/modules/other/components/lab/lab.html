@@ -1,0 +1,98 @@
+<div class="q-page lab">
+  <div class="resource-body">
+
+    <form name="form">
+      <!-- 图片 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            轮播图
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <image-selector items="ctrl.data.images"></image-selector>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <!-- 中文内容 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文内容
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea ui-tinymce="tinymceOptions" ng-model="ctrl.data.text" style="height: 200px;"></textarea>
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文内容 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文内容
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <textarea class="form-control" ui-tinymce="tinymceOptions" ng-model="ctrl.data.text_en" style="height: 200px;"></textarea>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <!-- circle -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            图片介绍
+          </div>
+           <div class="item-body col-md-9">
+             <div class="circles">
+               <div class="circle" ng-repeat="index in ctrl.circles">
+                 <single-image-selector url="ctrl.data[index].url"></single-image-selector>
+                 <div class="info">
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control"
+                        placeholder="中文标题"
+                        ng-model="ctrl.data[index].title">
+                    </div>
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control"
+                        placeholder="英文标题"
+                        ng-model="ctrl.data[index].title_en">
+                    </div>
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control"
+                        placeholder="中文内容"
+                        ng-model="ctrl.data[index].info">
+                    </div>
+                    <div class="form-group form-inline">
+                      <input type="text" class="form-control"
+                        placeholder="英文内容"
+                        ng-model="ctrl.data[index].info_en">
+                    </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+
+      <section class="q-item">
+        <div class="pull-right">
+          <button ng-disabled="form.$invalid || ctrl.isSubmitting" class="btn btn-lg btn-primary btn-emphasis" ng-click="ctrl.submit()">
+            更新
+          </button>
+        </div>
+        <br>
+      </section>
+
+    </form>
+  </div>
+</div>

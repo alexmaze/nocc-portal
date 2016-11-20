@@ -56,16 +56,14 @@ export function routes(
         parents: ['^.main']
       }
     })
-
-
-    // .state('main.lab', {
-    //   url: 'lab',
-    //   template: require('./components/lab/lab.html'),
-    //   controller: 'LabController as ctrl',
-    //   data: {
-    //     icon: 'fa-diamond',
-    //     title: '实验室'
-    //   }
-    // })
+    .state('main.lab', {
+      url: 'lab',
+      template: require('./components/lab/lab.html'),
+      controller: 'LabController as ctrl',
+      data: {
+        icon: 'fa-diamond',
+        title: '实验室'
+      }
+    })
     ;
 }
