@@ -19,6 +19,8 @@ import utils from 'opdev-front/src/utils';
 import statusTag from 'opdev-front/src/components/status-tag';
 import validateSameWith from 'opdev-front/src/components/validate-same-with';
 
+const uiPagination = require('angular-ui-bootstrap/src/pagination');
+
 // base styles
 import 'opdev-front/src/reset.less';
 import 'opdev-front/src/styles/toaster/toaster.less';
@@ -68,7 +70,8 @@ const baseModules = [
   statusTag,
   utils,
   qnModal,
-  validateSameWith
+  validateSameWith,
+  uiPagination
 ];
 
 const MODULE_NAME = 'qos.common';

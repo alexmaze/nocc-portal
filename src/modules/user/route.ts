@@ -13,7 +13,7 @@ export function routes(
       template: require('./components/user-list/user-list.html'),
       controller: 'UserListController as ctrl',
       data: {
-        icon: 'fa-user',
+        icon: 'fa-user-o',
         title: '用户'
       }
     });

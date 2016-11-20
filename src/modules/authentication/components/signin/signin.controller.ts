@@ -48,7 +48,7 @@ export class SigninController {
     if (!user) {
       return false;
     }
-    this.$state.go('main.user');
+    this.$state.go('main.showcase');
   }
 
   static getDepns () {
