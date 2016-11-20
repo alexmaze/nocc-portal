@@ -6,7 +6,8 @@ export class EventDetailController {
   editId: string;
   event: qos.IEvent = {
     poster: [],
-    images: []
+    images: [],
+    type: 0
   } as any;
 
   /* @ngInject */
@@ -38,6 +39,8 @@ export class EventDetailController {
         (img as any).file = undefined;
       });
     }
+
+    this.event.type = parseInt(this.event.type as any, 10);
 
     this.httpHelper.call<qos.user.IUser>('POST', '/api/event', this.event).$promise.success(() => {
       this.$state.go('^.main');

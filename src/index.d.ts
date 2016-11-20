@@ -77,6 +77,7 @@ declare namespace qos {
     created: Date;
     poster: IImage[];
     images: IImage[];
+    type: number;
   }
 
   interface IShowcase {

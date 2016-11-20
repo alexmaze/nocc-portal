@@ -14,7 +14,19 @@
       </qn-search-box>
     </div>
 
-    <div class="content">
+    <ul class="nav nav-tabs">
+      <li ng-class="{active: ctrl.currentType == 0}">
+        <a ng-click="ctrl.currentType = 0">Forum</a>
+      </li>
+      <li ng-class="{active: ctrl.currentType == 1}">
+        <a ng-click="ctrl.currentType = 1">Lecture</a>
+      </li>
+      <li ng-class="{active: ctrl.currentType == 2}">
+        <a ng-click="ctrl.currentType = 2">Workshop</a>
+      </li>
+    </ul>
+
+    <div class="content tab-content">
       <table class="q-table">
         <thead>
           <tr>

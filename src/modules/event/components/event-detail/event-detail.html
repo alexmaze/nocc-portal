@@ -6,6 +6,30 @@
       <section class="q-item">
         <div class="row">
           <div class="item-title col-md-3">
+            事件类型
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+                <label class="radio-btn">
+                  <input type="radio" ng-model="ctrl.event.type" value=0 required>
+                  <span>Forum</span>
+                </label>
+                <label class="radio-btn">
+                  <input type="radio" ng-model="ctrl.event.type" value=1 required>
+                  <span>Lecture</span>
+                </label>
+                <label class="radio-btn">
+                  <input type="radio" ng-model="ctrl.event.type" value=2 required>
+                  <span>Workshop</span>
+                </label>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
             事件时间
           </div>
            <div class="item-body col-md-9">

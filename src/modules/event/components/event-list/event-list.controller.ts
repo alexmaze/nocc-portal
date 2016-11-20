@@ -2,6 +2,7 @@ import './event-list.less';
 import * as _ from 'lodash';
 
 export class EventListController {
+  currentType;
 
   perpage = 10;
 
@@ -12,12 +13,20 @@ export class EventListController {
 
   /* @ngInject */
   constructor(
+    private $scope: angular.IScope,
     private $state: angular.ui.IStateService,
     private $translate: angular.translate.ITranslateService,
     private qnModal: any,
     private httpHelper: base.IHttpHelper,
     private userService: qos.service.IUserService) {
-    this.loadPage(1);
+    this.bind();
+  }
+
+  bind() {
+    this.$scope.$watch('ctrl.currentType', () => {
+      this.loadPage(1);
+    });
+    this.currentType = 0;
   }
 
   searchChange() {
@@ -35,7 +44,8 @@ export class EventListController {
     this.loaded = false;
     return this.httpHelper.call<base.IPageData<qos.IEvent>>('GET', '/api/event', {
       page: page,
-      perpage: this.perpage
+      perpage: this.perpage,
+      type: this.currentType
     }).$promise.success((data: base.IPageData<qos.IEvent>) => {
       this.loaded = true;
       this.data = data;
