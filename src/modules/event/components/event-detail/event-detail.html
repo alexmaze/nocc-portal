@@ -2,6 +2,21 @@
   <div class="resource-body">
 
     <form name="form">
+      <!-- 事件时间 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            事件时间
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.event.time">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
       <!-- 中文标题 -->
       <section class="q-item">
         <div class="row">
@@ -14,8 +29,7 @@
                <input type="text" class="form-control" name="name"
                 ng-model="ctrl.event.title"
                 required
-                auto-focus="true"
-                ng-model-options="ctrl.ngModelOptions">
+                auto-focus="true">
              </div>
            </div>
         </div>
@@ -31,8 +45,7 @@
                ng-class="{ 'has-error': form.enname.$invalid && form.enname.$dirty }">
                <input type="text" class="form-control" name="enname"
                 ng-model="ctrl.event.title_en"
-                required
-                ng-model-options="ctrl.ngModelOptions">
+                required>
              </div>
            </div>
         </div>
@@ -75,9 +88,7 @@
           </div>
            <div class="item-body col-md-9">
              <div class="form-group form-inline">
-               <textarea class="form-control"
-                ng-model="ctrl.event.content">
-               </textarea>
+               <textarea ui-tinymce="tinymceOptions" ng-model="ctrl.event.content" style="height: 200px;"></textarea>
              </div>
            </div>
         </div>
@@ -90,24 +101,35 @@
           </div>
            <div class="item-body col-md-9">
              <div class="form-group form-inline">
-               <textarea class="form-control"
-                ng-model="ctrl.event.content_en">
-               </textarea>
+               <textarea class="form-control" ui-tinymce="tinymceOptions" ng-model="ctrl.event.content_en" style="height: 200px;"></textarea>
              </div>
            </div>
         </div>
         <hr>
       </section>
-      <!-- 事件时间 -->
+      <!-- 封面 -->
       <section class="q-item">
         <div class="row">
           <div class="item-title col-md-3">
-            事件时间
+            封面
           </div>
            <div class="item-body col-md-9">
              <div class="form-group form-inline">
-               <input type="text" class="form-control"
-                ng-model="ctrl.event. time">
+               <image-selector items="ctrl.event.poster"></image-selector>
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
+      <!-- 图片 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            图片
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <image-selector items="ctrl.event.images"></image-selector>
              </div>
            </div>
         </div>
@@ -123,6 +145,7 @@
         </div>
         <br>
       </section>
+
     </form>
   </div>
 </div>

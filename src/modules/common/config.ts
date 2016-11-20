@@ -23,4 +23,6 @@ export default function config(
   cfpLoadingBarProvider.includeSpinner = false;
   cfpLoadingBarProvider.includeBar = true;
   cfpLoadingBarProvider.latencyThreshold = 100;
+
+  (window as any).tinyMCE.baseURL = '/static/tinymce';
 }

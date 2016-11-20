@@ -13,6 +13,18 @@ export default function run(
     'time-out': 5000
   };
 
+  ($rootScope as any).tinymceOptions = {
+    theme: 'modern',
+    plugins : 'textcolor colorpicker',
+    skin: 'light',
+    visual: true,
+    keep_values: false,
+    // forced_root_block: "div",
+    toolbar: 'styleselect | bold italic | forecolor backcolor | bullist numlist | alignleft aligncenter alignright alignjustify',
+    menubar : false,
+    statusbar : false
+};
+
   $rootScope.$on('#GLOBAL/LANGUAGE_CHANGED', () => {
     $state.reload();
   });

@@ -75,7 +75,7 @@ declare namespace qos {
     _id?: string;
     time: String;
     created: Date;
-    poster: IImage;
+    poster: IImage[];
     images: IImage[];
   }
 

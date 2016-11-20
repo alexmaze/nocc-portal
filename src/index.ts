@@ -12,6 +12,8 @@ import 'angular-local-storage';
 import 'angular-sanitize';
 import 'angular-messages';
 import 'ui-select';
+import 'angular-ui-tinymce';
+import 'ng-file-upload';
 
 import 'angular-loading-bar/build/loading-bar.css';
 import 'angularjs-toaster/toaster.css';
@@ -35,6 +37,8 @@ namespace base {
     'ngSanitize',
     'angular-loading-bar',
     'toaster',
+    'ui.tinymce',
+    'ngFileUpload',
     'LocalStorageModule'];
 
   let subModules = [

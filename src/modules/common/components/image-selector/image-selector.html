@@ -1,0 +1,17 @@
+<div class="image-selector-directive">
+
+  <div class="image-item"
+    ng-class="{'empty': (item.file == undefined && item.url == undefined),
+      'full': item.file != undefined && item.url == undefined}"
+    ng-repeat="item in ctrl.items">
+    <div class="image" ngf-select="" ngf-pattern="'image/*'" ngf-multiple="false" ng-model="item.file">
+      <img ngf-src="item.url"/>
+    </div>
+    <button class="upload" ng-if="item.url == undefined" ng-click="ctrl.upload(item)">上传</button>
+    <button class="upload" ng-if="item.url != undefined" ng-click="ctrl.descripton(item)">描述</button>
+    <i class="fa fa-close" ng-click="ctrl.remove(item)"></i>
+  </div>
+
+  <div class="plus-item" ng-click="ctrl.addOne()">+</div>
+
+</div>

@@ -4,7 +4,10 @@ import * as _ from 'lodash';
 export class EventDetailController {
 
   editId: string;
-  event: qos.IEvent = {} as any;
+  event: qos.IEvent = {
+    poster: [],
+    images: []
+  } as any;
 
   /* @ngInject */
   constructor(
@@ -25,5 +28,21 @@ export class EventDetailController {
   }
 
   submit() {
+    if (this.event.poster) {
+      this.event.poster.forEach(img => {
+        (img as any).file = undefined;
+      });
+    }
+    if (this.event.images) {
+      this.event.images.forEach(img => {
+        (img as any).file = undefined;
+      });
+    }
+
+    this.httpHelper.call<qos.user.IUser>('POST', '/api/event', this.event).$promise.success(() => {
+      this.$state.go('^.main');
+    });
+
+    console.log(this.event);
   }
 }

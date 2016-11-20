@@ -54,6 +54,7 @@
     "angular-translate": "^2.11.1",
     "angular-ui-bootstrap": "^2.0.1",
     "angular-ui-router": "^0.3.1",
+    "angular-ui-tinymce": "^0.0.17",
     "angularjs-toaster": "^2.0.0",
     "bootstrap": "^3.3.7",
     "echarts": "^3.2.3",
@@ -61,7 +62,9 @@
     "jquery": "^3.1.0",
     "lodash": "^4.16.1",
     "moment": "^2.14.1",
+    "ng-file-upload": "^12.2.13",
     "ng-tags-input": "^3.1.1",
+    "tinymce": "^4.4.3",
     "ui-select": "^0.19.4"
   }
 }

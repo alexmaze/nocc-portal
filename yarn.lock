@@ -88,6 +88,10 @@ angular-ui-router@^0.3.1:
   dependencies:
     angular "^1.0.8"
 
+angular-ui-tinymce:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/angular-ui-tinymce/-/angular-ui-tinymce-0.0.17.tgz#377500cab1a8e2e8bbbd0935534dbd571afba5e3"
+
 angular@^1.0.8, angular@^1.5.8, "angular@>=1.2.26 <=1.6":
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.8.tgz#925a5392b8c212d09572dc446db7e01264e094cb"
@@ -326,10 +330,6 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
-
-bootstrap-ui-datetime-picker@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/bootstrap-ui-datetime-picker/-/bootstrap-ui-datetime-picker-2.4.4.tgz#7bed06aebfaced3d0a4573cbfdff2e873badf3ae"
 
 bootstrap@^3.3.7:
   version "3.3.7"
@@ -951,10 +951,6 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-"echarts-ng@https://github.com/bornkiller/echarts-ng.git#v0.3.13":
-  version "0.1.5"
-  resolved "https://github.com/bornkiller/echarts-ng.git#78e157c8f26771623da53cdc76ea5e0e2d7e8e6b"
-
 echarts@^3.2.3:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/echarts/-/echarts-3.3.1.tgz#35ad7b1e9e941450ad3e0134635a04bf1e61bb42"
@@ -1174,7 +1170,7 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-font-awesome@^4.6.3, font-awesome@^4.7.0:
+font-awesome@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
 
@@ -2105,7 +2101,7 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@^4.14.1, lodash@^4.16.1, lodash@^4.16.2, lodash@^4.16.4:
+lodash@^4.16.1, lodash@^4.16.2, lodash@^4.16.4:
   version "4.17.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
@@ -2344,6 +2340,10 @@ ng-annotate@1.2.1:
     stringset "~0.2.1"
     tryor "~0.1.2"
 
+ng-file-upload:
+  version "12.2.13"
+  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-12.2.13.tgz#01800f3872e526f95310f8477e99e4f12d0d8d14"
+
 ng-tags-input@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/ng-tags-input/-/ng-tags-input-3.1.1.tgz#3f6a737e73467e2241971d5cad1db43b8237910f"
@@ -2548,25 +2548,6 @@ once@~1.3.3:
 onetime@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
-
-"opdev-front@git+ssh://git@github.com/qbox/opdev-front.git#npm":
-  version "1.0.0"
-  resolved "git+ssh://git@github.com/qbox/opdev-front.git#a8787aa867de2f90bbb7c32ab4dfff272dea58af"
-  dependencies:
-    angular "^1.5.8"
-    angular-animate "^1.5.8"
-    angular-touch "^1.5.8"
-    angular-translate "^2.11.1"
-    angular-ui-bootstrap "^2.0.1"
-    angular-ui-router "^0.3.1"
-    bootstrap "^3.3.7"
-    bootstrap-ui-datetime-picker "^2.4.4"
-    echarts "^3.2.3"
-    echarts-ng "https://github.com/bornkiller/echarts-ng.git#v0.3.13"
-    font-awesome "^4.6.3"
-    lodash "^4.14.1"
-    moment "^2.14.1"
-    range-datetimepicker "https://github.com/doxiaodong/range-datetimepicker.git#v0.4.2"
 
 optimist@~0.6.0, optimist@~0.6.1:
   version "0.6.1"
@@ -3061,10 +3042,6 @@ randomatic@^1.1.3:
   dependencies:
     is-number "^2.0.2"
     kind-of "^3.0.2"
-
-"range-datetimepicker@https://github.com/doxiaodong/range-datetimepicker.git#v0.4.2":
-  version "0.4.2"
-  resolved "https://github.com/doxiaodong/range-datetimepicker.git#e3900e0cd4e7e23836fa671a8adae92052432f39"
 
 range-parser@^1.0.3, range-parser@~1.2.0:
   version "1.2.0"
@@ -3649,6 +3626,10 @@ timers-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-1.4.2.tgz#c9c58b575be8407375cb5e2462dacee74359f41d"
   dependencies:
     process "~0.11.0"
+
+tinymce:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-4.4.3.tgz#63df0fb3ff90aedab506b7c451034bb5ea192cb1"
 
 toposort@^1.0.0:
   version "1.0.0"

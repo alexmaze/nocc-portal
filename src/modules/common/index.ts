@@ -42,7 +42,7 @@ import { SystemConfigService } from './services/system-config/system-config.serv
 import { CommonCheckModalService } from './components/common-check-modal/common-check-modal.service';
 
 import { navbarActions } from './components/navbar-actions/navbar-actions.directive';
-import { eventsBox } from './components/events-box/events-box.directive';
+import { imageSelector } from './components/image-selector/image-selector.directive';
 
 import { commonStatusFilter } from './components/common-status/common-status.filter';
 import { commonStatusTypeFilter } from './components/common-status/common-status-type.filter';
@@ -83,7 +83,7 @@ const MODULE_NAME = 'qos.common';
   .service('commonCheckModalService', CommonCheckModalService)
   .controller('MainController', MainController)
   .directive('navbarActions', navbarActions)
-  .directive('eventsBox', eventsBox)
+  .directive('imageSelector', imageSelector)
   .constant('typeConstants', typeConstants)
   .filter('type', type)
   .build(angular);
