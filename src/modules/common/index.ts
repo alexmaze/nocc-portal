@@ -9,7 +9,6 @@ import uiViewSlide from 'opdev-front/src/components/ui-view-slide';
 import httpHelper from 'opdev-front/src/services/http-helper';
 import qnFooter from 'opdev-front/src/components/qn-footer';
 import qnHeader from 'opdev-front/src/components/qn-header';
-import qnSidebar from 'opdev-front/src/components/qn-sidebar';
 import qnNavbar from 'opdev-front/src/components/qn-navbar';
 import qnSearchBox from 'opdev-front/src/components/qn-searchbox';
 import filters from 'opdev-front/src/components/filters';
@@ -19,6 +18,8 @@ import utils from 'opdev-front/src/utils';
 import statusTag from 'opdev-front/src/components/status-tag';
 import validateSameWith from 'opdev-front/src/components/validate-same-with';
 
+import qnSidebar from '../qn-sidebar';
+// import qnSidebar from 'opdev-front/src/components/qn-sidebar';
 const uiPagination = require('angular-ui-bootstrap/src/pagination');
 
 // base styles

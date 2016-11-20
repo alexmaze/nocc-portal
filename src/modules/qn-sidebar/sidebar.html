@@ -1,0 +1,49 @@
+<div class="qn-sidebar qn-sidebar-theme-{{theme}}" ng-class="{'narrowed': !isExpanded}">
+
+    <div class="sidebar-top" ng-class="{true: 'scrolled'}[scrolled]">
+      <div class="logo-wrapper">
+        <a ui-sref="main">
+          <img class="logo-img" src="./logo.png" alt="Qiniu Ltd.">
+        </a>
+      </div>
+    </div>
+
+    <perfect-scrollbar class="scroller"
+      min-scrollbar-length="20"
+      max-scrollbar-length="400"
+      on-scroll="onScroll(scrollTop)"
+      refresh-on-resize>
+
+      <div ng-repeat="item in items">
+        <div class="qn-sidebar-item"
+          ng-if="!item.isTitle && !item.isSeparator"
+
+          ng-click="action(item)"
+          ng-class="{'active': isActive(item)}"
+
+          uib-tooltip="{{item.name | translate}}"
+          tooltip-placement="right"
+          tooltip-class="tooltip"
+          tooltip-append-to-body="true"
+          tooltip-enable="!isExpanded">
+
+          <div class="icon fa {{item.icon}}"></div>
+          <div class="name" translate>{{item.name}}</div>
+          <div ng-if="item.features" class="more-icon fa fa-angle-right"></div>
+
+        </div>
+        <div ng-if="item.isSeparator" class="qn-sidebar-separator"></div>
+        <!--<div ng-if="item.isTitle && item.name" class="qn-sidebar-title" ng-class="{ 'make-hide': !isExpanded }">
+          <span translate>{{item.name}}</span>
+        </div>-->
+      </div>
+
+    </perfect-scrollbar>
+
+    <div class="sidebar-bottom">
+      <div class="qn-sidebar-item" ng-click="toggleExpand()">
+        <div class="icon fa" ng-class="{false: 'fa-angle-double-right', true: 'fa-angle-double-left'}[isExpanded]"></div>
+        <div class="name" translate="收缩侧边栏"></div>
+      </div>
+    </div>
+</div>
