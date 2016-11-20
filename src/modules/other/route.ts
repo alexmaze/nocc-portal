@@ -21,15 +21,15 @@ export function routes(
         title: '使命'
       }
     })
-    // .state('main.faculty', {
-    //   url: 'faculty',
-    //   template: require('./components/faculty/faculty.html'),
-    //   controller: 'FacultyController as ctrl',
-    //   data: {
-    //     icon: 'fa-id-card-o',
-    //     title: '关于 全体'
-    //   }
-    // })
+    .state('main.faculty', {
+      url: 'faculty',
+      template: require('./components/faculty/faculty.html'),
+      controller: 'FacultyController as ctrl',
+      data: {
+        icon: 'fa-id-card-o',
+        title: '关于 全体'
+      }
+    })
     // .state('main.lab', {
     //   url: 'lab',
     //   template: require('./components/lab/lab.html'),

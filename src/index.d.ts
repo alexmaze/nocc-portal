@@ -90,6 +90,50 @@ declare namespace qos {
     text_en: string;
   }
 
+  interface IFaculty {
+    _id?: string;
+
+    title: string;
+    position: string;
+    description: string;
+
+    photo: string;
+
+    title_en: string;
+    position_en: string;
+    description_en: string;
+
+    email: string;
+    created: Date;
+  }
+
+  interface ILab {
+    _id?: string;
+
+    images: IImage[];
+    text: string;
+    text_en: string;
+    circle1: {
+      title: string;
+      title_en: string;
+      url: string;
+    },
+    circle2: {
+      title: string;
+      title_en: string;
+      url: string;
+    },
+    circle3: {
+      title: string;
+      title_en: string;
+      url: string;
+    },
+    circle4: {
+      title: string;
+      title_en: string;
+      url: string;
+    }
+  }
 }
 
 

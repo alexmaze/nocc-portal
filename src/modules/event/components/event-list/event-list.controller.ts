@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 export class EventListController {
   currentType;
 
-  perpage = 10;
+  perpage = 12;
 
   searchKey: string;
   loaded: boolean;

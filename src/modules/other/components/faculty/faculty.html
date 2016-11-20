@@ -1,0 +1,61 @@
+<div class="q-page faculty-list">
+  <div class="resource-body">
+
+    <div class="actions clearfix">
+      <a class="btn btn-primary pull-left" ng-click="ctrl.create();">
+        <span>新建</span>
+      </a>
+
+      <button class="btn btn-mute btn-default pull-right" ng-click="ctrl.pageChanged()">刷新</button>
+      <qn-search-box class="pull-right"
+        value="ctrl.searchKey"
+        value-change="ctrl.searchChange()"
+        placeholder="搜索">
+      </qn-search-box>
+    </div>
+
+    <div class="content">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Position</th>
+            <th>Email</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="ctrl.loaded && (ctrl.data.items.length == 0)">
+            <td colspan="5" class="text-center text-sub">无数据</td>
+          </tr>
+          <tr ng-repeat="item in ctrl.data.items">
+            <td><div class="photo" style="background-image: url({{item.photo}})"></div></td>
+            <td>{{item.title}}</td>
+            <td>{{item.position}}</td>
+            <td>{{item.email}}</td>
+            <td>
+              <a class="btn-action action" ng-click="ctrl.edit(item)">编辑</a>
+              <a class="btn-action action" ng-click="ctrl.delete(item)">删除</a>
+            </td>
+          </tr>
+          <tr ng-if="!ctrl.loaded">
+            <td colspan="5" class="text-center text-sub">
+              <qn-loading></qn-loading>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div uib-pagination
+        force-ellipses="true"
+        total-items="ctrl.data.total"
+        items-per-page="ctrl.data.perpage"
+        ng-model="ctrl.data.page"
+        ng-change="ctrl.pageChanged()"
+        max-size="5"
+        class="pagination-sm pull-right"></div>
+    </div>
+
+  </div>
+</div>
