@@ -11,19 +11,19 @@
            <div class="item-body col-md-9">
              <div class="form-group form-inline">
                 <label class="radio-btn">
-                  <input type="radio" ng-model="ctrl.event.type" value=0 required>
+                  <input type="radio" ng-model="ctrl.event.type" value=0 >
                   <span>Forum</span>
                 </label>
                 <label class="radio-btn">
-                  <input type="radio" ng-model="ctrl.event.type" value=1 required>
+                  <input type="radio" ng-model="ctrl.event.type" value=1 >
                   <span>Lecture</span>
                 </label>
                 <label class="radio-btn">
-                  <input type="radio" ng-model="ctrl.event.type" value=2 required>
+                  <input type="radio" ng-model="ctrl.event.type" value=2 >
                   <span>Workshop</span>
                 </label>
                 <label class="radio-btn">
-                  <input type="radio" ng-model="ctrl.event.type" value=10 required>
+                  <input type="radio" ng-model="ctrl.event.type" value=10 >
                   <span>实验室</span>
                 </label>
              </div>
@@ -56,7 +56,7 @@
                ng-class="{ 'has-error': form.name.$invalid && form.name.$dirty }">
                <input type="text" class="form-control" name="name"
                 ng-model="ctrl.event.title"
-                required
+
                 auto-focus="true">
              </div>
            </div>
@@ -73,7 +73,7 @@
                ng-class="{ 'has-error': form.enname.$invalid && form.enname.$dirty }">
                <input type="text" class="form-control" name="enname"
                 ng-model="ctrl.event.title_en"
-                required>
+                >
              </div>
            </div>
         </div>

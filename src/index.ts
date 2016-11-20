@@ -12,7 +12,8 @@ import 'angular-local-storage';
 import 'angular-sanitize';
 import 'angular-messages';
 import 'ui-select';
-import 'angular-ui-tinymce';
+// import 'angular-ui-tinymce';
+import './modified-libs/tinymce';
 import 'ng-file-upload';
 
 import 'angular-loading-bar/build/loading-bar.css';
