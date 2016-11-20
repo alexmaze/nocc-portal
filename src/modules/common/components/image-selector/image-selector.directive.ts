@@ -18,7 +18,7 @@ export function imageSelector() {
 
 class ImageSelectorController {
 
-  items: qos.IImage[];
+  // items: qos.IImage[];
 
   /* @ngInject */
   constructor(
@@ -26,11 +26,11 @@ class ImageSelectorController {
     private $scope: any,
     private $uibModal: angular.ui.bootstrap.IModalService,
     private $rootScope: angular.IRootScopeService) {
-    this.items = $scope.items;
+    // this.items = $scope.items;
   }
 
   addOne() {
-    this.items.push({} as any);
+    this.$scope.items.push({} as any);
   }
 
   upload(item: qos.IImage) {
@@ -59,6 +59,6 @@ class ImageSelectorController {
 
   remove(item: qos.IImage) {
     // todo 删除文件
-    _.pull(this.items, item);
+    _.pull(this.$scope.items, item);
   }
 }
