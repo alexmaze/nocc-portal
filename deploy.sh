@@ -2,7 +2,7 @@
 
 user=root
 root=/root/website
-host=portal.nocc.alexyan.xyz
+host=nocc.alexyan.xyz
 path=portal
 
 
