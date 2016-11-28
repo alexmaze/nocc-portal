@@ -42,12 +42,15 @@ export class EventDetailController {
 
     this.event.type = parseInt(this.event.type as any, 10);
 
-    const method = this.editId ? 'PATCH' : 'POST';
-
-    this.httpHelper.call<qos.user.IUser>(method, '/api/event', this.event).$promise.success(() => {
-      this.$state.go('^.main');
-    });
-
+    if (this.editId) {
+      this.httpHelper.call<qos.user.IUser>('PATCH', '/api/event/' + this.editId, this.event).$promise.success(() => {
+        this.$state.go('^.main');
+      });
+    } else {
+      this.httpHelper.call<qos.user.IUser>('POST', '/api/event', this.event).$promise.success(() => {
+        this.$state.go('^.main');
+      });
+    }
     console.log(this.event);
   }
 }
