@@ -1,5 +1,6 @@
 {
   "CONFIRM": "确认",
   "CANCEL": "取消",
-  "PREVIOUS": "返回"
+  "PREVIOUS": "返回",
+  "QOS": "NOCC 管理后台"
 }
