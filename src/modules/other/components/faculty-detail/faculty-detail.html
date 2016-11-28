@@ -2,6 +2,35 @@
   <div class="resource-body">
 
     <form name="form">
+      <!-- 中文职位 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            中文职位
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.faculty.position">
+             </div>
+           </div>
+        </div>
+      </section>
+      <!-- 英文职位 -->
+      <section class="q-item">
+        <div class="row">
+          <div class="item-title col-md-3">
+            英文职位
+          </div>
+           <div class="item-body col-md-9">
+             <div class="form-group form-inline">
+               <input type="text" class="form-control"
+                ng-model="ctrl.faculty.position_en">
+             </div>
+           </div>
+        </div>
+        <hr>
+      </section>
       <!-- 中文 title -->
       <section class="q-item">
         <div class="row">
@@ -27,35 +56,6 @@
              <div class="form-group form-inline">
                <input type="text" class="form-control" name="enname"
                 ng-model="ctrl.faculty.title_en">
-             </div>
-           </div>
-        </div>
-        <hr>
-      </section>
-      <!-- 中文职位 -->
-      <section class="q-item">
-        <div class="row">
-          <div class="item-title col-md-3">
-            中文职位
-          </div>
-           <div class="item-body col-md-9">
-             <div class="form-group form-inline">
-               <input type="text" class="form-control"
-                ng-model="ctrl.faculty.position">
-             </div>
-           </div>
-        </div>
-      </section>
-      <!-- 英文职位 -->
-      <section class="q-item">
-        <div class="row">
-          <div class="item-title col-md-3">
-            英文职位
-          </div>
-           <div class="item-body col-md-9">
-             <div class="form-group form-inline">
-               <input type="text" class="form-control"
-                ng-model="ctrl.faculty.position_en">
              </div>
            </div>
         </div>
