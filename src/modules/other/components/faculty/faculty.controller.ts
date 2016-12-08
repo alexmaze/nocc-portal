@@ -47,7 +47,7 @@ export class FacultyController {
 
   delete(faculty: qos.IFaculty) {
     this.qnModal.confirm('删除确认', '您确定要删除此记录吗？', 'danger', 'sm').then(() => {
-      return this.httpHelper.call<void>('DELETE', '/api/faculty/:id', {
+      return this.httpHelper.call<void>('POST', '/api/faculty/:id/delete', {
         id: faculty._id
       }).$promise.success(() => {
         _.pull(this.data.items, faculty);

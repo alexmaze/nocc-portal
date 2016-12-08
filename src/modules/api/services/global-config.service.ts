@@ -36,7 +36,7 @@ export class ApiGlobalConfig {
    * @memberOf ApiGlobalConfig
    */
   patch(config: qos.IGlobalConfig): angular.IPromise<qos.IGlobalConfig> {
-    this.promise = this.httpHelper.call<qos.IGlobalConfig>('PATCH', '/api/global_config', config).$promise;
+    this.promise = this.httpHelper.call<qos.IGlobalConfig>('POST', '/api/global_config/patch', config).$promise;
     return this.promise;
   }
 }

@@ -24,7 +24,7 @@ export class MissionController {
   }
 
   submit() {
-    this.httpHelper.call<qos.IMission>('PATCH', '/api/mission', this.data).$promise.success(data => {
+    this.httpHelper.call<qos.IMission>('POST', '/api/mission/patch', this.data).$promise.success(data => {
       this.load();
     });
   }

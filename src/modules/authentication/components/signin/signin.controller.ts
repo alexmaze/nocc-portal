@@ -35,7 +35,7 @@ export class SigninController {
     }
 
     // call signin api
-    this.httpHelper.call<qos.user.IUser>('PUT', '/api/session', {
+    this.httpHelper.call<qos.user.IUser>('POST', '/api/session', {
       name: this.username,
       password: this.password
     }).$promise.success((data: qos.user.IUser) => {

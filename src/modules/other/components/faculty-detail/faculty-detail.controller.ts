@@ -27,7 +27,7 @@ export class FacultyDetailController {
     console.log(this.faculty);
 
     if (this.editId) {
-      this.httpHelper.call<qos.user.IUser>('PATCH', '/api/faculty/' + this.editId, this.faculty).$promise.success(() => {
+      this.httpHelper.call<qos.user.IUser>('POST', `/api/faculty/${this.editId}/patch`, this.faculty).$promise.success(() => {
         this.$state.go('^.main');
       });
     } else {

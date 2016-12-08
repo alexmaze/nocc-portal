@@ -15,7 +15,7 @@ export class PasswordController {
 
   submit() {
     this.isSubmitting = true;
-    this.httpHelper.call<qos.user.IUser>('PATCH', '/api/account/:id?password=true', {
+    this.httpHelper.call<qos.user.IUser>('POST', '/api/account/:id/patch?password=true', {
       id: this.user.id,
       password: this.password
     }).$promise.success(() => {

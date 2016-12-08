@@ -31,7 +31,7 @@ export class ChangePasswordController {
       return;
     }
 
-    this.httpHelper.call<qos.user.IUser>('PATCH', '/api/session?password=true', {
+    this.httpHelper.call<qos.user.IUser>('POST', '/api/session/patch?password=true', {
       old: this.oldPassword,
       new: this.newPassword
     }).$promise.success(() => {

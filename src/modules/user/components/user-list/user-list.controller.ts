@@ -68,7 +68,7 @@ export class UserListController {
   }
 
   deleteUser(id: string) {
-    return this.httpHelper.call<void>('DELETE', '/api/user/:id', {
+    return this.httpHelper.call<void>('POST', '/api/user/:id/delete', {
       id: id
     }).$promise;
   }

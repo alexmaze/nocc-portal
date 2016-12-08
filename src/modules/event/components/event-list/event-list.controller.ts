@@ -54,7 +54,7 @@ export class EventListController {
 
   delete(event: qos.IEvent) {
     this.qnModal.confirm('删除确认', '您确定要删除该事件吗？', 'danger', 'sm').then(() => {
-      return this.httpHelper.call<void>('DELETE', '/api/event/:id', {
+      return this.httpHelper.call<void>('POST', '/api/event/:id/delete', {
         id: event._id
       }).$promise.success(() => {
         _.pull(this.data.items, event);

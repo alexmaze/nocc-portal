@@ -32,7 +32,7 @@ class NavbarActionsClass {
   }
 
   signOut() {
-    this.httpHelper.call<void>('DELETE', '/api/session');
+    this.httpHelper.call<void>('POST', '/api/session/delete');
     this.userService.clearUserInfo();
     this.$state.go('signin');
   }

@@ -24,7 +24,7 @@ export class ShowcaseController {
   }
 
   submit() {
-    this.httpHelper.call<qos.IShowcase>('PATCH', '/api/showcase', this.data).$promise.success(data => {
+    this.httpHelper.call<qos.IShowcase>('POST', '/api/showcase/patch', this.data).$promise.success(data => {
       this.load();
     });
   }

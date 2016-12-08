@@ -25,7 +25,7 @@ export class LabController {
   }
 
   submit() {
-    this.httpHelper.call<qos.ILab>('PATCH', '/api/lab', this.data).$promise.success(data => {
+    this.httpHelper.call<qos.ILab>('POST', '/api/lab/patch', this.data).$promise.success(data => {
       this.load();
     });
   }

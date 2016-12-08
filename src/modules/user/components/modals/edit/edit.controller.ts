@@ -19,7 +19,7 @@ export class EditController {
   }
   submit() {
     this.isSubmitting = true;
-    this.httpHelper.call<qos.user.IUser>('PATCH', '/api/user/' + this.user._id, this.user).$promise.success(() => {
+    this.httpHelper.call<qos.user.IUser>('POST', `/api/user/${this.user._id}/patch`, this.user).$promise.success(() => {
       this.$scope.$close();
     }).finally(() => {
       this.isSubmitting = false;
